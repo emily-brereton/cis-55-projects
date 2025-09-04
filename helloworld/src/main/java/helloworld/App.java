@@ -10,5 +10,6 @@ public class App
     {
         System.out.println( "Hello World! :)");
         System.out.println();
+        System.out.println("You are doing great, keep it up!");
     }
 }
