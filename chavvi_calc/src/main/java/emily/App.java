@@ -21,11 +21,10 @@ public class App
         double B = 0.000;
         Scanner input = new Scanner(System.in);
         String choice = "";
-        
-         printMenu(A, B);
 
          // get user input
         while (!choice.equals("q")) {
+            printMenu(A, B);
             System.out.print("Enter a command: ");
             choice = input.nextLine();
 
@@ -33,14 +32,13 @@ public class App
             switch (choice) {
                 case "a" -> {
                     A = getA(input, A);
-                    printMenu(A, B);
                 }
                 case "b" -> {
                     B = getB(input, B);
-                    printMenu(A, B);
                 }
                 case "+" -> {
-                }
+                   A = getSum(A, B);
+               }
                 case "-" -> {
                 }
                 case "*" -> {
@@ -97,7 +95,11 @@ public class App
                     return B;
         }
 
+        public static double getSum(double A, double B) {
+            A = A + B;
+            return A;
     }
+}
 
 
 
