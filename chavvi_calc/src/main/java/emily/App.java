@@ -19,18 +19,22 @@ public class App
         // will need to round to 3 sig figs
         double A = 0.000;
         double B = 0.000;
-        double result = 0.000;
-        Scanner input = new Scanner(System.in);
-        String choice = "";        
+        //Scanner input = new Scanner(System.in);
+        //String choice = "";
+        
+         printMenu(A, B);
+        
+    }    
 
         // print display menu
-        System.out.println("""
+        public static String printMenu (double A, double B) {
+            String menuTitle = """
                 --------------------------------------
                 Chavvi Calc
                 --------------------------------------
-                """);
-        System.out.println("A = " + A + "\t B = " + B );
-        System.out.println("""
+                """;
+            String menuVariables = "A = " + String.format("%.3f", A) + "\t B = " + String.format("%.3f", B);
+            String menuCommands = """
                 --------------------------------------
                 a \t Enter a value for A
                 b \t Enter a value for B
@@ -41,9 +45,13 @@ public class App
                 c \t Clear
                 q \t Quit
                 --------------------------------------
-                """);
+                """;
+        String menu = (menuTitle + menuVariables + "\n" + menuCommands);
+        System.out.println(menu);
+            return menu;
+        }}
                 
-        // get user input
+    /*     // get user input
         while (!choice.equals("q")) {
             System.out.print("Enter a command: ");
             choice = input.nextLine();
@@ -93,4 +101,4 @@ public class App
             }
         }
                 }
-    }
+    } */
