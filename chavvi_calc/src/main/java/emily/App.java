@@ -36,6 +36,8 @@ public class App
                     printMenu(A, B);
                 }
                 case "b" -> {
+                    B = getB(input, B);
+                    printMenu(A, B);
                 }
                 case "+" -> {
                 }
@@ -81,14 +83,21 @@ public class App
             return menu;
         }
        
-        
-       
         public static double getA(Scanner input, double A) {
             System.out.print("Enter a value for A: ");
                     A = input.nextDouble();
                     input.nextLine();
                     return A;
-        }}
+        }
+    
+        public static double getB(Scanner input, double B) {
+            System.out.print("Enter a value for B: ");
+                    B = input.nextDouble();
+                    input.nextLine();
+                    return B;
+        }
+
+    }
 
 
 
