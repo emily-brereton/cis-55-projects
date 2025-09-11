@@ -19,12 +19,42 @@ public class App
         // will need to round to 3 sig figs
         double A = 0.000;
         double B = 0.000;
-        //Scanner input = new Scanner(System.in);
-        //String choice = "";
+        Scanner input = new Scanner(System.in);
+        String choice = "";
         
          printMenu(A, B);
-        
-    }    
+
+         // get user input
+        while (!choice.equals("q")) {
+            System.out.print("Enter a command: ");
+            choice = input.nextLine();
+
+        // switch between menu options to select relevant code
+            switch (choice) {
+                case "a" -> {
+                    A = getA(input, A);
+                    printMenu(A, B);
+                }
+                case "b" -> {
+                }
+                case "+" -> {
+                }
+                case "-" -> {
+                }
+                case "*" -> {
+                }
+                case "/" -> {
+                }
+                case "c" -> {
+                }
+                case "q" -> System.out.println("System terminated.");
+                default -> System.out.println("Invalid entry. Please try again.");
+            }
+        } 
+
+         input.close(); }
+
+
 
         // print display menu
         public static String printMenu (double A, double B) {
@@ -49,12 +79,24 @@ public class App
         String menu = (menuTitle + menuVariables + "\n" + menuCommands);
         System.out.println(menu);
             return menu;
+        }
+       
+        
+       
+        public static double getA(Scanner input, double A) {
+            System.out.print("Enter a value for A: ");
+                    A = input.nextDouble();
+                    input.nextLine();
+                    return A;
         }}
-                
-    /*     // get user input
-        while (!choice.equals("q")) {
-            System.out.print("Enter a command: ");
-            choice = input.nextLine();
+
+
+
+
+
+
+
+    /*     
             
         // switch between menu options to select relevant code
             switch (choice) {
