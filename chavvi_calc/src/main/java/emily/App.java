@@ -47,7 +47,6 @@ public class App
         while (!choice.equals("q")) {
             System.out.print("Enter a command: ");
             choice = input.nextLine();
-            }
             
         // switch between menu options to select relevant code
             switch (choice) {
@@ -93,4 +92,5 @@ public class App
                 default -> System.out.println("Invalid entry. Please try again.");
             }
         }
+                }
     }
