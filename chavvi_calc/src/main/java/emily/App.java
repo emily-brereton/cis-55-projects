@@ -47,6 +47,50 @@ public class App
         while (!choice.equals("q")) {
             System.out.print("Enter a command: ");
             choice = input.nextLine();
-            }        
+            }
+            
+        // switch between menu options to select relevant code
+            switch (choice) {
+                case "a" -> {
+                    System.out.print("Enter a value for A: ");
+                    A = input.nextDouble();
+                    input.nextLine();
+                    System.out.println("A = " + A);
+                }
+                case "b" -> {
+                    System.out.print("Enter a value for B: ");
+                    B = input.nextDouble();
+                    input.nextLine();
+                    System.out.println("B = " + B);
+                }
+                case "+" -> {
+                    result = A + B;
+                    System.out.printf("Result: %.3f\n", result);
+                }
+                case "-" -> {
+                    result = A - B;
+                    System.out.printf("Result: %.3f\n", result);
+                }
+                case "*" -> {
+                    result = A * B;
+                    System.out.printf("Result: %.3f\n", result);
+                }
+                case "/" -> {
+                    if (B == 0) {
+                        System.out.println("Error: Division by zero is not allowed.");
+                    } else {
+                        result = A / B;
+                        System.out.printf("Result: %.3f\n", result);
+                    }
+                }
+                case "c" -> {
+                    A = 0.000;
+                    B = 0.000;
+                    result = 0.000;
+                    System.out.println("Cleared. A = " + A + "\t B = " + B);
+                }
+                case "q" -> System.out.println("System terminated.");
+                default -> System.out.println("Invalid entry. Please try again.");
+            }
         }
     }
