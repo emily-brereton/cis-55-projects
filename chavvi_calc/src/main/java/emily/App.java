@@ -37,13 +37,16 @@ public class App
                     B = getB(input, B);
                 }
                 case "+" -> {
-                   A = getSum(A, B);
-               }
+                    A = getSum(A, B);
+                }
                 case "-" -> {
+                    A = getDifference(A, B);
                 }
                 case "*" -> {
+                    A = getProduct(A, B);
                 }
                 case "/" -> {
+                    A = getQuotient(A, B);
                 }
                 case "c" -> {
                 }
@@ -98,7 +101,27 @@ public class App
         public static double getSum(double A, double B) {
             A = A + B;
             return A;
-    }
+        }
+
+        public static double getDifference(double A, double B) {
+            A = A - B;
+            return A;
+        }
+
+        public static double getProduct(double A, double B) {
+            A = A * B;
+            return A;
+        }
+        
+        public static double getQuotient(double A, double B) {
+            if (B == 0) {
+                System.out.println("Error: Division by zero is not allowed.");
+                return A;
+            } else {
+                A = A / B;
+                return A;
+            }
+        }
 }
 
 
