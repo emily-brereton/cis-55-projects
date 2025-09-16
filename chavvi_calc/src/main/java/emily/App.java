@@ -16,20 +16,19 @@ public class App {
         // A and B are the two numbers to be calculated
         // will need to round to 3 sig figs
 
-        /* double A = 0.000;
-        double B = 0.000; */
+        double A = 0.000;
+        double B = 0.000;
         Scanner input = new Scanner(System.in);
         String choice = "";
 
         Calc calc = new Calc();
 
+        calc.printMenu(A, B);
+
         // get user input
         while (!choice.equals("q")) {
 
-            double A = 1.234;
-            double B = 5.678;
-
-            calc.printMenu(A, B);
+            calc.printMenu(calc.getA(input), calc.getB(input));
 
             System.out.print("Enter a command: ");
             choice = input.nextLine();
