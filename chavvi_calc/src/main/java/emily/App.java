@@ -86,7 +86,7 @@ public class App {
         A = input.nextDouble();
         input.nextLine();
         return A;
-    } */
+    }
 
     public static double getB(Scanner input, double B) {
         System.out.print("Enter a value for B: ");
@@ -118,7 +118,7 @@ public class App {
             A = A / B;
             return A;
         }
-    }
+    } */
 
 }
 
@@ -159,6 +159,31 @@ class Calc {
         return B;
     }
 
+    public static double getSum(double A, double B) {
+        A = A + B;
+        return A;
+    }
+
+    public static double getDifference(double A, double B) {
+        A = A - B;
+        return A;
+    }
+
+    public static double getProduct(double A, double B) {
+        A = A * B;
+        return A;
+    }
+
+    public static double getQuotient(double A, double B) {
+        if (B == 0) {
+            System.out.println("Error: Division by zero is not allowed.");
+            return A;
+        } else {
+            A = A / B;
+            return A;
+        }
+
+}
 }
 
 /*
