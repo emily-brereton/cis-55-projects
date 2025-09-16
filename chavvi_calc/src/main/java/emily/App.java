@@ -25,14 +25,14 @@ public class App {
 
         // get user input
         while (!choice.equals("q")) {
-            
+
             calc.printMenu();
 
             System.out.print("Enter a command: ");
             choice = input.nextLine();
 
             // switch between menu options to select relevant code
-            switch (choice) {
+            /*switch (choice) {
                 case "a" -> {
                     A = getA(input, A);
                 }
@@ -55,77 +55,14 @@ public class App {
                 }
                 case "q" -> System.out.println("System terminated.");
                 default -> System.out.println("Invalid entry. Please try again.");
-            }
+            } */
         }
 
         input.close();
     }
 
-    /*// print display menu
-    public static String printMenu(double A, double B) {
-        String menuTitle = """
-                --------------------------------------
-                Chavvi Calc
-                --------------------------------------
-                """;
-        String menuVariables = "A = " + String.format("%.3f", A) + "\t B = " + String.format("%.3f", B);
-        String menuCommands = """
-                --------------------------------------
-                a \t Enter a value for A
-                b \t Enter a value for B
-                + \t Add
-                - \t Subtract
-                * \t Multiply
-                / \t Divide
-                c \t Clear
-                q \t Quit
-                --------------------------------------
-                """;
-        String menu = (menuTitle + menuVariables + "\n" + menuCommands);
-        System.out.println(menu);
-        return menu;
-    }
-
-    public static double getA(Scanner input, double A) {
-        System.out.print("Enter a value for A: ");
-        A = input.nextDouble();
-        input.nextLine();
-        return A;
-    }
-
-    public static double getB(Scanner input, double B) {
-        System.out.print("Enter a value for B: ");
-        B = input.nextDouble();
-        input.nextLine();
-        return B;
-    }
-
-    public static double getSum(double A, double B) {
-        A = A + B;
-        return A;
-    }
-
-    public static double getDifference(double A, double B) {
-        A = A - B;
-        return A;
-    }
-
-    public static double getProduct(double A, double B) {
-        A = A * B;
-        return A;
-    }
-
-    public static double getQuotient(double A, double B) {
-        if (B == 0) {
-            System.out.println("Error: Division by zero is not allowed.");
-            return A;
-        } else {
-            A = A / B;
-            return A;
-        }
-    } */
-
 }
+
 
 class Calc {
 
@@ -189,7 +126,7 @@ class Calc {
         }
 
 }
-public static String printMenu(double A, double B) {
+public String printMenu() {
         String menuTitle = """
                 --------------------------------------
                 Chavvi Calc
