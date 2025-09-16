@@ -40,19 +40,19 @@ public class App {
                     A = calc.getA(input);
                 }
                 case "b" -> {
-                    //B = getB(input, B);
+                    B = calc.getB(input);
                 }
                 case "+" -> {
-                    //A = getSum(A, B);
+                    A = calc.getSum(A, B);
                 }
                 case "-" -> {
-                    //A = getDifference(A, B);
+                    A = calc.getDifference(A, B);
                 }
                 case "*" -> {
-                    //A = getProduct(A, B);
+                    A = calc.getProduct(A, B);
                 }
                 case "/" -> {
-                    //A = getQuotient(A, B);
+                    A = calc.getQuotient(A, B);
                 }
                 case "c" -> {
                 }
@@ -104,22 +104,22 @@ class Calc {
         return B;
     }
 
-    public static double getSum(double A, double B) {
+    public double getSum(double A, double B) {
         A = A + B;
         return A;
     }
 
-    public static double getDifference(double A, double B) {
+    public double getDifference(double A, double B) {
         A = A - B;
         return A;
     }
 
-    public static double getProduct(double A, double B) {
+    public double getProduct(double A, double B) {
         A = A * B;
         return A;
     }
 
-    public static double getQuotient(double A, double B) {
+    public double getQuotient(double A, double B) {
         if (B == 0) {
             System.out.println("Error: Division by zero is not allowed.");
             return A;
