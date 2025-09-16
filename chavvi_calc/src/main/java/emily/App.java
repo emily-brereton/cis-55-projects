@@ -53,9 +53,6 @@ public class App {
             }
         }
 
-        String test = "Something is wrong";
-        System.out.println(branchTest(test));
-
         input.close();
     }
 
@@ -123,11 +120,17 @@ public class App {
         }
     }
 
-    public static String branchTest(String test){
-        test = "Branch test successful";
-        return test;
-    }
+}
 
+class Calc {
+
+    private String A;
+    private String B;
+
+    public Calc() {
+        this.A = "0.000";
+        this.B = "0.000";
+    }
 }
 
 /*
