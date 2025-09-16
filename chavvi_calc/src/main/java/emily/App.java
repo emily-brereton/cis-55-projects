@@ -26,36 +26,39 @@ public class App {
         // get user input
         while (!choice.equals("q")) {
 
-            calc.printMenu();
+            double A = 1.234;
+            double B = 5.678;
+
+            calc.printMenu(A, B);
 
             System.out.print("Enter a command: ");
             choice = input.nextLine();
 
             // switch between menu options to select relevant code
-            /*switch (choice) {
+            switch (choice) {
                 case "a" -> {
-                    A = getA(input, A);
+                    calc.getA(input);
                 }
                 case "b" -> {
-                    B = getB(input, B);
+                    //B = getB(input, B);
                 }
                 case "+" -> {
-                    A = getSum(A, B);
+                    //A = getSum(A, B);
                 }
                 case "-" -> {
-                    A = getDifference(A, B);
+                    //A = getDifference(A, B);
                 }
                 case "*" -> {
-                    A = getProduct(A, B);
+                    //A = getProduct(A, B);
                 }
                 case "/" -> {
-                    A = getQuotient(A, B);
+                    //A = getQuotient(A, B);
                 }
                 case "c" -> {
                 }
                 case "q" -> System.out.println("System terminated.");
                 default -> System.out.println("Invalid entry. Please try again.");
-            } */
+            }
         }
 
         input.close();
@@ -83,9 +86,9 @@ class Calc {
         this.A = A;
     }
     
-    public double getA(Scanner input, double A) {
+    public double getA(Scanner input) {
         System.out.print("Enter a value for A: ");
-        A = input.nextDouble();
+        double A = input.nextDouble();
         input.nextLine();
         return A;
     }
@@ -94,7 +97,7 @@ class Calc {
         this.B = B;
     }
 
-    public double getB(Scanner input, double B) {
+    public double getB(Scanner input) {
         System.out.print("Enter a value for B: ");
         B = input.nextDouble();
         input.nextLine();
@@ -124,15 +127,15 @@ class Calc {
             A = A / B;
             return A;
         }
-
 }
-public String printMenu() {
-        String menuTitle = """
+
+ public void printMenu(double A, double B) {
+    String menuTitle = """
                 --------------------------------------
                 Chavvi Calc
                 --------------------------------------
                 """;
-        String menuVariables = "A = " + String.format("%.3f", A) + "\t B = " + String.format("%.3f", B);
+        String menuVariables = "A = " + /*String.format("%.3f",*/ A + "\t B = " + /*String.format("%.3f",*/ B;
         String menuCommands = """
                 --------------------------------------
                 a \t Enter a value for A
@@ -147,8 +150,8 @@ public String printMenu() {
                 """;
         String menu = (menuTitle + menuVariables + "\n" + menuCommands);
         System.out.println(menu);
-        return menu;
     }
+
 
 }
 
