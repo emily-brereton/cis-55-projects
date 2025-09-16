@@ -23,12 +23,13 @@ public class App {
 
         Calc calc = new Calc();
 
-        calc.printMenu(A, B);
+        
 
         // get user input
         while (!choice.equals("q")) {
 
-            calc.printMenu(calc.getA(input), calc.getB(input));
+            //calc.printMenu(calc.getA(input), calc.getB(input));
+            calc.printMenu(A, B);
 
             System.out.print("Enter a command: ");
             choice = input.nextLine();
@@ -36,7 +37,7 @@ public class App {
             // switch between menu options to select relevant code
             switch (choice) {
                 case "a" -> {
-                    calc.getA(input);
+                    A = calc.getA(input);
                 }
                 case "b" -> {
                     //B = getB(input, B);
