@@ -15,14 +15,19 @@ public class App {
         // initialize numerical variables and scanner object
         // A and B are the two numbers to be calculated
         // will need to round to 3 sig figs
-        double A = 0.000;
-        double B = 0.000;
+
+        /* double A = 0.000;
+        double B = 0.000; */
         Scanner input = new Scanner(System.in);
         String choice = "";
 
+        Calc calc = new Calc();
+
         // get user input
         while (!choice.equals("q")) {
-            printMenu(A, B);
+            
+            calc.printMenu();
+
             System.out.print("Enter a command: ");
             choice = input.nextLine();
 
@@ -56,7 +61,7 @@ public class App {
         input.close();
     }
 
-    // print display menu
+    /*// print display menu
     public static String printMenu(double A, double B) {
         String menuTitle = """
                 --------------------------------------
@@ -81,7 +86,7 @@ public class App {
         return menu;
     }
 
-    /* public static double getA(Scanner input, double A) {
+    public static double getA(Scanner input, double A) {
         System.out.print("Enter a value for A: ");
         A = input.nextDouble();
         input.nextLine();
@@ -184,6 +189,30 @@ class Calc {
         }
 
 }
+public static String printMenu(double A, double B) {
+        String menuTitle = """
+                --------------------------------------
+                Chavvi Calc
+                --------------------------------------
+                """;
+        String menuVariables = "A = " + String.format("%.3f", A) + "\t B = " + String.format("%.3f", B);
+        String menuCommands = """
+                --------------------------------------
+                a \t Enter a value for A
+                b \t Enter a value for B
+                + \t Add
+                - \t Subtract
+                * \t Multiply
+                / \t Divide
+                c \t Clear
+                q \t Quit
+                --------------------------------------
+                """;
+        String menu = (menuTitle + menuVariables + "\n" + menuCommands);
+        System.out.println(menu);
+        return menu;
+    }
+
 }
 
 /*
