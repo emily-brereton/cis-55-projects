@@ -81,12 +81,12 @@ public class App {
         return menu;
     }
 
-    public static double getA(Scanner input, double A) {
+    /* public static double getA(Scanner input, double A) {
         System.out.print("Enter a value for A: ");
         A = input.nextDouble();
         input.nextLine();
         return A;
-    }
+    } */
 
     public static double getB(Scanner input, double B) {
         System.out.print("Enter a value for B: ");
@@ -124,13 +124,41 @@ public class App {
 
 class Calc {
 
-    private String A;
-    private String B;
+    private double A;
+    private double B;
 
     public Calc() {
-        this.A = "0.000";
-        this.B = "0.000";
+        this.A = 0.000;
+        this.B = 0.000;
     }
+
+    public Calc(double A, double B) {
+        this.A = A;
+        this.B = B;
+    }
+
+    public void setA(double A) {
+        this.A = A;
+    }
+    
+    public double getA(Scanner input, double A) {
+        System.out.print("Enter a value for A: ");
+        A = input.nextDouble();
+        input.nextLine();
+        return A;
+    }
+
+    public void setB(double B) {
+        this.B = B;
+    }
+
+    public double getB(Scanner input, double B) {
+        System.out.print("Enter a value for B: ");
+        B = input.nextDouble();
+        input.nextLine();
+        return B;
+    }
+
 }
 
 /*
