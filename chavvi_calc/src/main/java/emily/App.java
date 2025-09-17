@@ -23,12 +23,10 @@ public class App {
 
         Calc calc = new Calc();
 
-        
 
         // get user input
         while (!choice.equals("q")) {
 
-            //calc.printMenu(calc.getA(input), calc.getB(input));
             calc.printMenu(A, B);
 
             System.out.print("Enter a command: ");
@@ -55,15 +53,15 @@ public class App {
                     A = calc.getQuotient(A, B);
                 }
                 case "c" -> {
+                    A = calc.clearA(A);
+                    B = calc.clearB(B);
                 }
                 case "q" -> System.out.println("System terminated.");
                 default -> System.out.println("Invalid entry. Please try again.");
             }
         }
-
         input.close();
     }
-
 }
 
 
@@ -127,7 +125,17 @@ class Calc {
             A = A / B;
             return A;
         }
-}
+    }
+
+    public double clearA(double A) {
+        A = 0.000;
+        return A;
+    }
+
+    public double clearB(double B) {
+        B = 0.000;
+        return B;
+    }
 
  public void printMenu(double A, double B) {
     String menuTitle = """
@@ -151,7 +159,6 @@ class Calc {
         String menu = (menuTitle + menuVariables + "\n" + menuCommands);
         System.out.println(menu);
     }
-
 
 }
 
