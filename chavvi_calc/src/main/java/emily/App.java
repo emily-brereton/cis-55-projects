@@ -2,6 +2,8 @@ package emily;
 
 import java.util.Scanner;
 import java.lang.Math;
+import java.text.DecimalFormat;
+import java.math.RoundingMode;
 
 /*
  * Student Name: Emily Brereton
@@ -21,8 +23,7 @@ public class App {
         Scanner input = new Scanner(System.in);
         String choice = "";
 
-        Calc calc = new Calc();
-
+        Calc calc = new Calc();   
 
         // get user input
         while (!choice.equals("q")) {
@@ -152,12 +153,16 @@ class Calc {
     }
 
  public void printMenu(double A, double B) {
+
+    DecimalFormat df = new DecimalFormat("0.000");
+    df.setRoundingMode(RoundingMode.HALF_UP);
+
     String menuTitle = """
                 --------------------------------------
                 Chavvi Calc
                 --------------------------------------
                 """;
-        String menuVariables = "A = " + /*String.format("%.3f",*/ A + "\t B = " + /*String.format("%.3f",*/ B;
+        String menuVariables = "A = " + df.format(A) + "\t B = " + df.format(B);
         String menuCommands = """
                 --------------------------------------
                 a \t Enter a value for A
