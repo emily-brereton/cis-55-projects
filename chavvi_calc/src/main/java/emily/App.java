@@ -1,7 +1,6 @@
 package emily;
 
 import java.util.Scanner;
-import java.lang.Math;
 import java.text.DecimalFormat;
 import java.math.RoundingMode;
 
@@ -14,18 +13,18 @@ import java.math.RoundingMode;
  */
 public class App {
     public static void main(String[] args) {
+
         // initialize numerical variables and scanner object
         // A and B are the two numbers to be calculated
-        // will need to round to 3 sig figs
-
-        double A = 0.000;
-        double B = 0.000;
+        float A = 0.000f;
+        float B = 0.000f;
         Scanner input = new Scanner(System.in);
         String choice = "";
 
+        // initialize Calc object
         Calc calc = new Calc();   
 
-        // get user input
+        // get user input, until user exits program
         while (!choice.equals("q")) {
 
             calc.printMenu(A, B);
@@ -68,27 +67,27 @@ public class App {
 
 class Calc {
 
-    private double A;
-    private double B;
+    private float A;
+    private float B;
 
     public Calc() {
-        this.A = 0.000;
-        this.B = 0.000;
+        this.A = 0.000f;
+        this.B = 0.000f;
     }
 
-    public Calc(double A, double B) {
+    public Calc(float A, float B) {
         this.A = A;
         this.B = B;
     }
 
-    public void setA(double A) {
+    public void setA(float A) {
         this.A = A;
     }
     
-    public double getA(Scanner input) {
+    public float getA(Scanner input) {
         try {
             System.out.print("Enter a value for A: ");
-            double A = input.nextDouble();
+            A = input.nextFloat();
             input.nextLine();
             return A; 
         }
@@ -99,14 +98,14 @@ class Calc {
         }
     }
 
-    public void setB(double B) {
+    public void setB(float B) {
         this.B = B;
     }
 
-    public double getB(Scanner input) {
+    public float getB(Scanner input) {
         try {
             System.out.print("Enter a value for B: ");
-            B = input.nextDouble();
+            B = input.nextFloat();
             input.nextLine();
             return B;
         }
@@ -117,22 +116,22 @@ class Calc {
         }
     }
 
-    public double getSum(double A, double B) {
+    public float getSum(float A, float B) {
         A = A + B;
         return A;
     }
 
-    public double getDifference(double A, double B) {
+    public float getDifference(float A, float B) {
         A = A - B;
         return A;
     }
 
-    public double getProduct(double A, double B) {
+    public float getProduct(float A, float B) {
         A = A * B;
         return A;
     }
 
-    public double getQuotient(double A, double B) {
+    public float getQuotient(float A, float B) {
         if (B == 0) {
             System.out.println("Error: Division by zero is not allowed.");
             return A;
@@ -142,17 +141,17 @@ class Calc {
         }
     }
 
-    public double clearA(double A) {
-        A = 0.000;
+    public float clearA(float A) {
+        A = 0.000f;
         return A;
     }
 
-    public double clearB(double B) {
-        B = 0.000;
+    public float clearB(float B) {
+        B = 0.000f;
         return B;
     }
 
- public void printMenu(double A, double B) {
+ public void printMenu(float A, float B) {
 
     DecimalFormat df = new DecimalFormat("0.000");
     df.setRoundingMode(RoundingMode.HALF_UP);
