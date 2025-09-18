@@ -67,23 +67,29 @@ public class App {
 
 class Calc {
 
+    // instance variables
     private float A;
     private float B;
 
+    // default constructor. Initialize Object with A and B = 0.000
     public Calc() {
         this.A = 0.000f;
         this.B = 0.000f;
     }
 
+    // overloaded constructor. Initialize Object with user defined values for A and B
     public Calc(float A, float B) {
         this.A = A;
         this.B = B;
     }
 
+    // sets the value of A
     public void setA(float A) {
         this.A = A;
     }
     
+    // gets the value of A
+    // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
     public float getA(Scanner input) {
         try {
             System.out.print("Enter a value for A: ");
@@ -98,10 +104,13 @@ class Calc {
         }
     }
 
+    // sets the value of B
     public void setB(float B) {
         this.B = B;
     }
 
+    // gets the value of B
+    // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
     public float getB(Scanner input) {
         try {
             System.out.print("Enter a value for B: ");
@@ -115,22 +124,26 @@ class Calc {
             return this.B; // return the current value of B 
         }
     }
-
+    // adds A and B, sum is saved in variable A, and returns the new value of A
     public float getSum(float A, float B) {
         A = A + B;
         return A;
     }
 
+    // subtracts B from A, difference is saved in variable A, and returns the new value of A    
     public float getDifference(float A, float B) {
         A = A - B;
         return A;
     }
 
+    // multiplies A and B, product is saved in variable A, and returns the new value of A
     public float getProduct(float A, float B) {
         A = A * B;
         return A;
     }
 
+    // divides A by B, quotient is saved in variable A, and returns the new value of A
+    // if B = 0, error message is printed and A remains unchanged
     public float getQuotient(float A, float B) {
         if (B == 0) {
             System.out.println("Error: Division by zero is not allowed.");
@@ -141,27 +154,30 @@ class Calc {
         }
     }
 
+    // clears the value of A, returns A as 0.000
     public float clearA(float A) {
         A = 0.000f;
         return A;
     }
 
+    // clears the value of B, returns B as 0.000
     public float clearB(float B) {
         B = 0.000f;
         return B;
     }
 
- public void printMenu(float A, float B) {
+    // prints the menu to the console
+    public void printMenu(float A, float B) {
 
-    DecimalFormat df = new DecimalFormat("0.000");
-    df.setRoundingMode(RoundingMode.HALF_UP);
+        DecimalFormat df = new DecimalFormat("0.000"); // formats A and B to 3 decimal places (including trailing zeros)
+        df.setRoundingMode(RoundingMode.HALF_UP); // rounds up if the next digit is 5 or greater
 
-    String menuTitle = """
+        String menuTitle = """
                 --------------------------------------
                 Chavvi Calc
                 --------------------------------------
                 """;
-        String menuVariables = "A = " + df.format(A) + "\t B = " + df.format(B);
+        String menuVariables = "A = " + df.format(A) + "\t B = " + df.format(B); // format A and B to 3 decimal places and save as string
         String menuCommands = """
                 --------------------------------------
                 a \t Enter a value for A
@@ -174,7 +190,7 @@ class Calc {
                 q \t Quit
                 --------------------------------------
                 """;
-        String menu = (menuTitle + menuVariables + "\n" + menuCommands);
+        String menu = (menuTitle + menuVariables + "\n" + menuCommands); // combine all menu strings
         System.out.println(menu);
     }
 
