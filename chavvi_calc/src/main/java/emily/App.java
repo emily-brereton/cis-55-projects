@@ -25,7 +25,7 @@ public class App {
         Calc calc = new Calc();   
 
         // get user input, until user exits program
-        while (!choice.equals("q")) {
+        while (!choice.equalsIgnoreCase("q")) {
 
             calc.printMenu(A, B);
 
@@ -34,10 +34,10 @@ public class App {
 
             // switch between menu options to select relevant code
             switch (choice) {
-                case "a" -> {
+                case "a", "A" -> {
                     A = calc.getA(input);
                 }
-                case "b" -> {
+                case "b", "B" -> {
                     B = calc.getB(input);
                 }
                 case "+" -> {
@@ -52,11 +52,11 @@ public class App {
                 case "/" -> {
                     A = calc.getQuotient(A, B);
                 }
-                case "c" -> {
+                case "c", "C" -> {
                     A = calc.clearA(A);
                     B = calc.clearB(B);
                 }
-                case "q" -> System.out.println("System terminated.");
+                case "q", "Q" -> System.out.println("System terminated.");
                 default -> System.out.println("Invalid entry. Please try again.");
             }
         }
