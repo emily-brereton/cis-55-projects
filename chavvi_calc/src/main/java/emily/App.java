@@ -15,9 +15,9 @@ public class App {
     public static void main(String[] args) {
 
         // initialize numerical variables and scanner object
-        // A and B are the two numbers to be calculated
-        float A = 0.000f;
-        float B = 0.000f;
+        // a and b are the two numbers to be calculated
+        float a = 0.000f;
+        float b = 0.000f;
         Scanner input = new Scanner(System.in);
         String choice = "";
 
@@ -27,7 +27,7 @@ public class App {
         // get user input, until user exits program
         while (!choice.equalsIgnoreCase("q")) {
 
-            calc.printMenu(A, B);
+            calc.printMenu(a, b);
 
             System.out.print("Enter a command: ");
             choice = input.nextLine();
@@ -35,26 +35,26 @@ public class App {
             // switch between menu options to select relevant code
             switch (choice) {
                 case "a", "A" -> {
-                    A = calc.getA(input);
+                    a = calc.getA(input);
                 }
                 case "b", "B" -> {
-                    B = calc.getB(input);
+                    b = calc.getB(input);
                 }
                 case "+" -> {
-                    A = calc.getSum(A, B);
+                    a = calc.sum(a, b);
                 }
                 case "-" -> {
-                    A = calc.getDifference(A, B);
+                    a = calc.difference(a, b);
                 }
                 case "*" -> {
-                    A = calc.getProduct(A, B);
+                    a = calc.product(a, b);
                 }
                 case "/" -> {
-                    A = calc.getQuotient(A, B);
+                    a = calc.quotient(a, b);
                 }
                 case "c", "C" -> {
-                    A = calc.clearA(A);
-                    B = calc.clearB(B);
+                    a = calc.clearA(a);
+                    b = calc.clearB(b);
                 }
                 case "q", "Q" -> System.out.println("System terminated.");
                 default -> System.out.println("Invalid entry. Please try again.");
@@ -68,108 +68,108 @@ public class App {
 class Calc {
 
     // instance variables
-    private float A;
-    private float B;
+    private float a;
+    private float b;
 
-    // default constructor. Initialize Object with A and B = 0.000
+    // default constructor. Initialize Object with a and b = 0.000
     public Calc() {
-        this.A = 0.000f;
-        this.B = 0.000f;
+        this.a = 0.000f;
+        this.b = 0.000f;
     }
 
-    // overloaded constructor. Initialize Object with user defined values for A and B
-    public Calc(float A, float B) {
-        this.A = A;
-        this.B = B;
+    // overloaded constructor. Initialize Object with user defined values for a and b
+    public Calc(float a, float b) {
+        this.a = a;
+        this.b = b;
     }
 
-    // sets the value of A
-    public void setA(float A) {
-        this.A = A;
+    // sets the value of a
+    public void setA(float a) {
+        this.a = a;
     }
     
-    // gets the value of A
+    // gets the value of a
     // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
     public float getA(Scanner input) {
         try {
-            System.out.print("Enter a value for A: ");
-            A = input.nextFloat();
+            System.out.print("Enter a value for a: ");
+            a = input.nextFloat();
             input.nextLine();
-            return A; 
+            return a; 
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter a numerical value.");
-            input.nextLine(); // clear the invalid input
-            return this.A; // return the current value of A 
+            input.nextLine();
+            return this.a;
         }
     }
 
-    // sets the value of B
-    public void setB(float B) {
-        this.B = B;
+    // sets the value of b
+    public void setB(float b) {
+        this.b = b;
     }
 
-    // gets the value of B
+    // gets the value of b
     // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
     public float getB(Scanner input) {
         try {
-            System.out.print("Enter a value for B: ");
-            B = input.nextFloat();
+            System.out.print("Enter a value for b: ");
+            b = input.nextFloat();
             input.nextLine();
-            return B;
+            return b;
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter a numerical value.");
             input.nextLine(); // clear the invalid input
-            return this.B; // return the current value of B 
+            return this.b; // return the current value of B 
         }
     }
-    // adds A and B, sum is saved in variable A, and returns the new value of A
-    public float getSum(float A, float B) {
-        A = A + B;
-        return A;
+    // adds a and b, sum is saved in variable A, and returns the new value of a
+    public float sum(float a, float b) {
+        a = a + b;
+        return a;
     }
 
-    // subtracts B from A, difference is saved in variable A, and returns the new value of A    
-    public float getDifference(float A, float B) {
-        A = A - B;
-        return A;
+    // subtracts b from a, difference is saved in variable a, and returns the new value of a    
+    public float difference(float a, float b) {
+        a = a - b;
+        return a;
     }
 
-    // multiplies A and B, product is saved in variable A, and returns the new value of A
-    public float getProduct(float A, float B) {
-        A = A * B;
-        return A;
+    // multiplies a and b, product is saved in variable a, and returns the new value of a
+    public float product(float a, float b) {
+        a = a * b;
+        return a;
     }
 
-    // divides A by B, quotient is saved in variable A, and returns the new value of A
-    // if B = 0, error message is printed and A remains unchanged
-    public float getQuotient(float A, float B) {
-        if (B == 0) {
+    // divides a by b, quotient is saved in variable a, and returns the new value of a
+    // if b = 0, error message is printed and A remains unchanged
+    public float quotient(float a, float b) {
+        if (b == 0) {
             System.out.println("Error: Division by zero is not allowed.");
-            return A;
+            return a;
         } else {
-            A = A / B;
-            return A;
+            a = a / b;
+            return a;
         }
     }
 
-    // clears the value of A, returns A as 0.000
-    public float clearA(float A) {
-        A = 0.000f;
-        return A;
+    // clears the value of a, returns a as 0.000
+    public float clearA(float a) {
+        a = 0.000f;
+        return a;
     }
 
-    // clears the value of B, returns B as 0.000
-    public float clearB(float B) {
-        B = 0.000f;
-        return B;
+    // clears the value of b, returns b as 0.000
+    public float clearB(float b) {
+        b = 0.000f;
+        return b;
     }
 
     // prints the menu to the console
-    public void printMenu(float A, float B) {
+    public void printMenu(float a, float b) {
 
-        DecimalFormat df = new DecimalFormat("0.000"); // formats A and B to 3 decimal places (including trailing zeros)
+        DecimalFormat df = new DecimalFormat("0.000"); // formats a and b to 3 decimal places (including trailing zeros)
         df.setRoundingMode(RoundingMode.HALF_UP); // rounds up if the next digit is 5 or greater
 
         String menuTitle = """
@@ -177,11 +177,12 @@ class Calc {
                 Chavvi Calc
                 --------------------------------------
                 """;
-        String menuVariables = "A = " + df.format(A) + "\t B = " + df.format(B); // format A and B to 3 decimal places and save as string
+        // format a and b to 3 decimal places and save as string
+        String menuVariables = "a = " + df.format(a) + "\t b = " + df.format(b);
         String menuCommands = """
                 --------------------------------------
-                a \t Enter a value for A
-                b \t Enter a value for B
+                a \t Enter a value for a
+                b \t Enter a value for b
                 + \t Add
                 - \t Subtract
                 * \t Multiply
