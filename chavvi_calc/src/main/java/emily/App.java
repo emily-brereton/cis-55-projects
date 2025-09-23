@@ -32,7 +32,6 @@ public class App {
             System.out.print("Enter a command: ");
             choice = input.nextLine();
 
-            // switch between menu options to select relevant code
             switch (choice) {
                 case "a","A" -> {
                     a = calc.getA(input);
@@ -67,7 +66,6 @@ public class App {
 
 class Calc {
 
-    // instance variables
     private float a;
     private float b;
 
@@ -83,32 +81,29 @@ class Calc {
         this.b = b;
     }
 
-    // sets the value of a
     public void setA(float a) {
         this.a = a;
     }
     
-    // gets the value of a
-    // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
+    // gets the value of a from user
     public float getA(Scanner input) {
         System.out.println("Enter a value for a: ");
         a = getNumber(input, a);
         return a;
     }
 
-    // sets the value of b
     public void setB(float b) {
         this.b = b;
     }
 
-    // gets the value of b
+    // gets the value of b from user
     public float getB(Scanner input) {
         System.out.println("Enter a value for b: ");
         b = getNumber(input, b);
         return b;
     }
 
-    // method to obtain a value for any variable, from the user
+    // method to obtain a value for any variable
     // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
     public float getNumber(Scanner input, float n) {
         try {
@@ -166,7 +161,7 @@ class Calc {
         return b;
     }
 
-    // prints the menu to the console
+    // prints the menu to the console, formats and rounds a and b to three places 
     public void printMenu(float a,float b) {
 
         DecimalFormat df = new DecimalFormat("0.000");
@@ -177,7 +172,6 @@ class Calc {
                 Chavvi Calc
                 --------------------------------------
                 """;
-        // format a and b to 3 decimal places and save as string
         String menuVariables = "a = " + df.format(a) + "\t b = " + df.format(b);
         String menuCommands = """
                 --------------------------------------
@@ -191,9 +185,7 @@ class Calc {
                 q \t Quit
                 --------------------------------------
                 """;
-        String menu = (menuTitle + menuVariables + "\n" + menuCommands); // combine all menu strings
+    String menu = (menuTitle + menuVariables + "\n" + menuCommands);
         System.out.println(menu);
     }
-
 }
-
