@@ -14,17 +14,14 @@ import java.math.RoundingMode;
 public class App {
     public static void main(String[] args) {
 
-        // initialize numerical variables and scanner object
         // a and b are the two numbers to be calculated
         float a = 0.0f;
         float b = 0.0f;
         Scanner input = new Scanner(System.in);
         String choice = "";
-
-        // initialize Calc object
         Calc calc = new Calc();   
 
-        // get user input, until user exits program
+        // print menu and get user input, until user exits program
         while (!choice.equalsIgnoreCase("q")) {
 
             calc.printMenu(a,b);
@@ -55,7 +52,7 @@ public class App {
                     a = calc.clearA(a);
                     b = calc.clearB(b);
                 }
-                case "q", "Q" -> System.out.println("System terminated.");
+                case "q","Q" -> System.out.println("System terminated.");
                 default -> System.out.println("Invalid entry. Please try again.");
             }
         }
@@ -81,31 +78,9 @@ class Calc {
         this.b = b;
     }
 
-    public void setA(float a) {
-        this.a = a;
-    }
-    
-    // gets the value of a from user
-    public float getA(Scanner input) {
-        System.out.println("Enter a value for a: ");
-        a = getNumber(input, a);
-        return a;
-    }
-
-    public void setB(float b) {
-        this.b = b;
-    }
-
-    // gets the value of b from user
-    public float getB(Scanner input) {
-        System.out.println("Enter a value for b: ");
-        b = getNumber(input, b);
-        return b;
-    }
-
     // method to obtain a value for any variable
     // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
-    public float getNumber(Scanner input, float n) {
+    public float getNumber(Scanner input,float n) {
         try {
             n = input.nextFloat();
             input.nextLine();
@@ -118,27 +93,46 @@ class Calc {
         }
     }
 
+    public void setA(float a) {
+        this.a = a;
+    }
+    
+    public float getA(Scanner input) {
+        System.out.println("Enter a value for a: ");
+        a = getNumber(input,a);
+        return a;
+    }
 
-    // adds a and b, sum is saved in variable A, and returns the new value of a
+    public void setB(float b) {
+        this.b = b;
+    }
+
+    public float getB(Scanner input) {
+        System.out.println("Enter a value for b: ");
+        b = getNumber(input, b);
+        return b;
+    }
+
+    // adds a and b, sum is saved in variable a
     public float add(float a,float b) {
         a = a + b;
         return a;
     }
 
-    // subtracts b from a, difference is saved in variable a, and returns the new value of a    
+    // subtracts b from a, difference is saved in variable a 
     public float subtract(float a,float b) {
         a = a - b;
         return a;
     }
 
-    // multiplies a and b, product is saved in variable a, and returns the new value of a
+    // multiplies a and b, product is saved in variable a
     public float multiply(float a,float b) {
         a = a * b;
         return a;
     }
 
-    // divides a by b, quotient is saved in variable a, and returns the new value of a
-    // if b = 0, error message is printed and A remains unchanged
+    // divides a by b, quotient is saved in variable a
+    // if b = 0, error message is printed and a remains unchanged
     public float divide(float a,float b) {
         if (b == 0) {
             System.out.println("Error: Division by zero is not allowed.");
