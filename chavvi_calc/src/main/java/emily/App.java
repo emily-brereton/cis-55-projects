@@ -16,8 +16,8 @@ public class App {
 
         // initialize numerical variables and scanner object
         // a and b are the two numbers to be calculated
-        float a = 0.000f;
-        float b = 0.000f;
+        float a = 0.0f;
+        float b = 0.0f;
         Scanner input = new Scanner(System.in);
         String choice = "";
 
@@ -27,32 +27,32 @@ public class App {
         // get user input, until user exits program
         while (!choice.equalsIgnoreCase("q")) {
 
-            calc.printMenu(a, b);
+            calc.printMenu(a,b);
 
             System.out.print("Enter a command: ");
             choice = input.nextLine();
 
             // switch between menu options to select relevant code
             switch (choice) {
-                case "a", "A" -> {
+                case "a","A" -> {
                     a = calc.getA(input);
                 }
-                case "b", "B" -> {
+                case "b","B" -> {
                     b = calc.getB(input);
                 }
                 case "+" -> {
-                    a = calc.sum(a, b);
+                    a = calc.add(a,b);
                 }
                 case "-" -> {
-                    a = calc.difference(a, b);
+                    a = calc.subtract(a,b);
                 }
                 case "*" -> {
-                    a = calc.product(a, b);
+                    a = calc.multiply(a,b);
                 }
                 case "/" -> {
-                    a = calc.quotient(a, b);
+                    a = calc.divide(a,b);
                 }
-                case "c", "C" -> {
+                case "c","C" -> {
                     a = calc.clearA(a);
                     b = calc.clearB(b);
                 }
@@ -73,12 +73,12 @@ class Calc {
 
     // default constructor. Initialize Object with a and b = 0.000
     public Calc() {
-        this.a = 0.000f;
-        this.b = 0.000f;
+        this.a = 0.0f;
+        this.b = 0.0f;
     }
 
     // overloaded constructor. Initialize Object with user defined values for a and b
-    public Calc(float a, float b) {
+    public Calc(float a,float b) {
         this.a = a;
         this.b = b;
     }
@@ -120,31 +120,31 @@ class Calc {
         }
         catch (Exception e) {
             System.out.println("Invalid input. Please enter a numerical value.");
-            input.nextLine(); // clear the invalid input
-            return this.b; // return the current value of B 
+            input.nextLine();
+            return this.b;
         }
     }
     // adds a and b, sum is saved in variable A, and returns the new value of a
-    public float sum(float a, float b) {
+    public float add(float a,float b) {
         a = a + b;
         return a;
     }
 
     // subtracts b from a, difference is saved in variable a, and returns the new value of a    
-    public float difference(float a, float b) {
+    public float subtract(float a,float b) {
         a = a - b;
         return a;
     }
 
     // multiplies a and b, product is saved in variable a, and returns the new value of a
-    public float product(float a, float b) {
+    public float multiply(float a,float b) {
         a = a * b;
         return a;
     }
 
     // divides a by b, quotient is saved in variable a, and returns the new value of a
     // if b = 0, error message is printed and A remains unchanged
-    public float quotient(float a, float b) {
+    public float divide(float a,float b) {
         if (b == 0) {
             System.out.println("Error: Division by zero is not allowed.");
             return a;
@@ -156,21 +156,21 @@ class Calc {
 
     // clears the value of a, returns a as 0.000
     public float clearA(float a) {
-        a = 0.000f;
+        a = 0.0f;
         return a;
     }
 
     // clears the value of b, returns b as 0.000
     public float clearB(float b) {
-        b = 0.000f;
+        b = 0.0f;
         return b;
     }
 
     // prints the menu to the console
-    public void printMenu(float a, float b) {
+    public void printMenu(float a,float b) {
 
-        DecimalFormat df = new DecimalFormat("0.000"); // formats a and b to 3 decimal places (including trailing zeros)
-        df.setRoundingMode(RoundingMode.HALF_UP); // rounds up if the next digit is 5 or greater
+        DecimalFormat df = new DecimalFormat("0.000");
+        df.setRoundingMode(RoundingMode.HALF_UP);
 
         String menuTitle = """
                 --------------------------------------
