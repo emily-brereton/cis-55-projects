@@ -91,17 +91,9 @@ class Calc {
     // gets the value of a
     // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
     public float getA(Scanner input) {
-        try {
-            System.out.print("Enter a value for a: ");
-            a = input.nextFloat();
-            input.nextLine();
-            return a; 
-        }
-        catch (Exception e) {
-            System.out.println("Invalid input. Please enter a numerical value.");
-            input.nextLine();
-            return this.a;
-        }
+        System.out.println("Enter a value for a: ");
+        a = getNumber(input, a);
+        return a;
     }
 
     // sets the value of b
@@ -110,20 +102,28 @@ class Calc {
     }
 
     // gets the value of b
-    // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
     public float getB(Scanner input) {
+        System.out.println("Enter a value for b: ");
+        b = getNumber(input, b);
+        return b;
+    }
+
+    // method to obtain a value for any variable, from the user
+    // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
+    public float getNumber(Scanner input, float n) {
         try {
-            System.out.print("Enter a value for b: ");
-            b = input.nextFloat();
+            n = input.nextFloat();
             input.nextLine();
-            return b;
+            return n;
         }
         catch (Exception e) {
-            System.out.println("Invalid input. Please enter a numerical value.");
+            System.out.println("Invalid input. Please enter a numberical value.");
             input.nextLine();
-            return this.b;
+            return n;
         }
     }
+
+
     // adds a and b, sum is saved in variable A, and returns the new value of a
     public float add(float a,float b) {
         a = a + b;
