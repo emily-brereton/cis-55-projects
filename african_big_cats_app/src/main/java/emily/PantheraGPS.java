@@ -14,8 +14,9 @@ public class PantheraGPS {
     protected final float maxSpeed = 50.0f;
 
     // attributes
-    private String name;
-    private String species;
+
+    String name;
+    String species;
 
     private Float longitude;
     private Float latitude;
@@ -24,11 +25,9 @@ public class PantheraGPS {
     private Random latitudeRandom;
 
     // constructor
-    public PantheraGPS(String name) {
+    public PantheraGPS() {
 
         // initialize attributes
-        this.name = name;
-        this.species = "pantheraGPS";
 
         // seed the random number generators for repeatable results
         this.longitudeRandom = new Random();

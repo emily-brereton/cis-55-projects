@@ -1,6 +1,7 @@
 package emily;
 
-/**
+
+/*
  * Hello world!
  */
 public class App {

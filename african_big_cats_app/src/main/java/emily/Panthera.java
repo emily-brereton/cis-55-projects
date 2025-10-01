@@ -1,14 +1,19 @@
 package emily;
 
-public class Panthera extends PantheraGPS {
+public class Panthera extends PantheraGPS{
 
-    private Object PantheraGPS;
-    private int weight;
+    int weight;
+    String furType;
+    boolean sleepsInTrees;
 
 // constructor
-public Panthera(Object PantheraGPS, int weight) {
-    this.PantheraGPS = PantheraGPS;
-    this.weight = weight;
-}; 
+public Panthera(){
+    name = "";
+    species = "Panthera";
+};
+
+public void roar(){
+    System.out.println("Rrrrrrrrroooooooaaaaarrrrr!");
+}
 
 }
