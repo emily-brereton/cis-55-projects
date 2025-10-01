@@ -15,10 +15,35 @@ public class App {
 
         ArrayList<Panthera> allBigCats = new ArrayList<Panthera>();
         Scanner input = new Scanner(System.in);
+        String selection = "";
         
-        new Menu().printMenu();
-        String selection= input.nextLine().toUpperCase();
 
+        while(!selection.equals("q")){
+            new Menu().printMenu();
+            selection= input.nextLine().toLowerCase();
+
+            switch (selection){
+                case "c" -> {
+
+                }
+                case "d" -> {
+
+                }
+                case "f" -> {
+
+                }
+                case "l" -> {
+
+                }
+                case "q" -> {
+                    System.out.println("Thank you for using the African Big Cats App!");
+
+                 }
+                default -> {
+                    System.out.println("Invalid selection. Please try again");
+                }
+            }
+        }
     }
 }
 
