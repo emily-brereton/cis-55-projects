@@ -2,6 +2,7 @@ package emily;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.HashMap;
 
 /*
  * Student Name: Emily Brereton
@@ -19,11 +20,24 @@ public class App {
         
 
         while(!selection.equals("q")){
-            new Menu().printMenu();
-            selection= input.nextLine().toLowerCase();
+            Menu menu = new Menu();
+            menu.printMenu();
+            selection = input.nextLine().toLowerCase();
 
             switch (selection){
                 case "c" -> {
+                    menu.printCreateMenu();
+                    String bigCatChoice = input.nextLine();
+                    System.out.println("Enter a name for your big cat: ");
+                    String name = input.nextLine();
+
+                    HashMap<String,Object> bigCats = menu.makeHashMap(name);
+                    Object newCat = bigCats.get(bigCatChoice);
+                    System.out.println(newCat.toString());
+                    
+
+
+
 
                 }
                 case "d" -> {
@@ -62,6 +76,27 @@ class Menu {
                 ------------------------------------------------------------
                 Enter a command: 
                 """);
+    }
+
+    public void printCreateMenu(){
+        System.out.println("""
+            ------------------------------------------------------------
+            Would you like to add a tiger, lion, or jaguar?
+            ------------------------------------------------------------
+                t       [T]iger
+                l       [L]ion
+                j       [J]aguar
+            ------------------------------------------------------------
+            Enter a command:
+                    """);
+    }
+
+    public HashMap<String,Object> makeHashMap(String name){
+        HashMap<String,Object> bigCats = new HashMap<>();
+            bigCats.put("t",new Tiger(name));
+            bigCats.put("l",new Lion(name));
+            bigCats.put("j",new Jaguar(name));
+            return bigCats;
     }
 
 }
