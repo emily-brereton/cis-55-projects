@@ -31,8 +31,12 @@ public class App {
                     System.out.println("Enter a name for your big cat: ");
                     String name = input.nextLine();
 
-                    HashMap<String,Object> bigCats = menu.makeHashMap(name);
-                    Object newCat = bigCats.get(bigCatChoice);
+                    HashMap<String,Panthera> bigCats = menu.makeHashMap(name);
+                    Panthera newCat = bigCats.get(bigCatChoice);
+
+                    allBigCats.add(newCat);
+                    System.out.println(name + " saved to your population.");
+
                     System.out.println(newCat.toString());
                     
 
@@ -47,6 +51,9 @@ public class App {
 
                 }
                 case "l" -> {
+                    System.out.println("Here is your current population:");
+                    for (Panthera p : allBigCats) { System.out.println(p.toString());
+                    } 
 
                 }
                 case "q" -> {
@@ -91,8 +98,8 @@ class Menu {
                     """);
     }
 
-    public HashMap<String,Object> makeHashMap(String name){
-        HashMap<String,Object> bigCats = new HashMap<>();
+    public HashMap<String,Panthera> makeHashMap(String name){
+        HashMap<String,Panthera> bigCats = new HashMap<>();
             bigCats.put("t",new Tiger(name));
             bigCats.put("l",new Lion(name));
             bigCats.put("j",new Jaguar(name));
