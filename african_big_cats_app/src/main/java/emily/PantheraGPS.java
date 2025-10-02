@@ -41,7 +41,7 @@ public class PantheraGPS {
 
     }
 
-    // serializes attributes into a string
+    /*// serializes attributes into a string
     public String toString() {
         String s;
 
@@ -58,7 +58,7 @@ public class PantheraGPS {
 
         return s;
 
-    }
+    }*/
 
     // getters
     public String name() {

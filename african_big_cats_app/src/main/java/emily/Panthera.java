@@ -8,15 +8,11 @@ public class Panthera extends PantheraGPS{
 
 // constructor
 public Panthera(){
-    name = "";
-    //species = "Panthera";
+    super();
 };
 
 public void roar(){
     System.out.println("Rrrrrrrrroooooooaaaaarrrrr!");
 }
-
-
-
 
 }
