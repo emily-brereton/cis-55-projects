@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class App {
     public static void main(String[] args) {
 
-        ArrayList<Panthera> allBigCats = new ArrayList<Panthera>();
+        var allBigCats = new ArrayList<>();
         Scanner input = new Scanner(System.in);
         String selection = "";
         
@@ -28,20 +28,22 @@ public class App {
                 case "c" -> {
                     menu.printCreateMenu();
                     String bigCatChoice = input.nextLine();
+                    bigCatChoice = bigCatChoice.toLowerCase();
+                    if (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")){
+                        System.out.println("Invalid selection. Please try again");
+                        break;
+                    }
                     System.out.println("Enter a name for your big cat: ");
                     String name = input.nextLine();
 
-                    HashMap<String,Panthera> bigCats = menu.makeHashMap(name);
-                    Panthera newCat = bigCats.get(bigCatChoice);
+                    HashMap<String,Object> bigCats = menu.makeHashMap(name);
+                    var newCat = bigCats.get(bigCatChoice);
 
                     allBigCats.add(newCat);
                     System.out.println(name + " saved to your population.");
 
                     System.out.println(newCat.toString());
                     
-
-
-
 
                 }
                 case "d" -> {
@@ -52,7 +54,7 @@ public class App {
                 }
                 case "l" -> {
                     System.out.println("Here is your current population:");
-                    for (Panthera p : allBigCats) { System.out.println(p.toString());
+                    for (var p : allBigCats) { System.out.println(p.toString());
                     } 
 
                 }
@@ -98,8 +100,8 @@ class Menu {
                     """);
     }
 
-    public HashMap<String,Panthera> makeHashMap(String name){
-        HashMap<String,Panthera> bigCats = new HashMap<>();
+    public HashMap<String,Object> makeHashMap(String name){
+        HashMap<String,Object> bigCats = new HashMap<>();
             bigCats.put("t",new Tiger(name));
             bigCats.put("l",new Lion(name));
             bigCats.put("j",new Jaguar(name));

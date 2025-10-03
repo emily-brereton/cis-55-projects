@@ -7,7 +7,8 @@ public class Tiger extends Panthera{
     String species;
 
     Tiger(){
-        name = "not null";
+        name = "";
+        species = "Tiger";   
     }
 
     Tiger(String name){
@@ -19,6 +20,7 @@ public class Tiger extends Panthera{
         return species;
     }
 
+    @Override
     public String toString() {
         String s;
 

@@ -16,7 +16,7 @@ public class PantheraGPS {
     // attributes
 
     String name;
-    String species;
+   // String species;
 
     private Float longitude;
     private Float latitude;
@@ -65,13 +65,13 @@ public class PantheraGPS {
         return this.name;
     }
 
-    public String species() {
+    /*public String species() {
         return this.species;
     }
 
     public void setSpecies(String species) {
         this.species = species;
-    }
+    }*/
 
     // make a seed, based on the name
     private Integer seed(String s) {
