@@ -16,7 +16,7 @@ public class PantheraGPS {
     // attributes
 
     String name;
-   // String species;
+    Species species;
 
     private Float longitude;
     private Float latitude;
@@ -41,7 +41,7 @@ public class PantheraGPS {
 
     }
 
-    /*// serializes attributes into a string
+    // serializes attributes into a string
     public String toString() {
         String s;
 
@@ -49,7 +49,7 @@ public class PantheraGPS {
         s = "{ ";
         s += "name: " + name;
         s += ", ";
-        s += "species: " + this.species();
+        s += "species: " + this.species;
         s += ", ";
         s += "longitude: " + this.longitude();
         s += ", ";
@@ -58,20 +58,20 @@ public class PantheraGPS {
 
         return s;
 
-    }*/
+    }
 
     // getters
     public String name() {
         return this.name;
     }
 
-    /*public String species() {
+    public Species species() {
         return this.species;
     }
 
-    public void setSpecies(String species) {
+    public void setSpecies(Species species) {
         this.species = species;
-    }*/
+    }
 
     // make a seed, based on the name
     private Integer seed(String s) {
@@ -99,6 +99,4 @@ public class PantheraGPS {
     public Float latitude() {
         return latitude;
     }
-
-
 }

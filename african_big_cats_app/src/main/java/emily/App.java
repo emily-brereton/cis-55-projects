@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class App {
     public static void main(String[] args) {
 
-        var allBigCats = new ArrayList<>();
+        ArrayList<PantheraGPS> allBigCats = new ArrayList<PantheraGPS>();
         Scanner input = new Scanner(System.in);
         String selection = "";
         
@@ -26,26 +26,30 @@ public class App {
 
             switch (selection){
                 case "c" -> {
-                    menu.printCreateMenu();
-                    String bigCatChoice = input.nextLine();
-                    bigCatChoice = bigCatChoice.toLowerCase();
-                    if (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")){
-                        System.out.println("Invalid selection. Please try again");
-                        break;
-                    }
-                    System.out.println("Enter a name for your big cat: ");
-                    String name = input.nextLine();
+                    String name = "";
+                    String bigCatChoice = "";
+                    while (name.equals("")) {
+                        menu.printCreateMenu();
+                        bigCatChoice = input.nextLine();
+                        bigCatChoice = bigCatChoice.toLowerCase();
+                            if (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")){
+                                 System.out.println("Invalid selection. Please try again");
+                                    break;
+                                }
+                        System.out.println("Enter a name for your big cat: ");
+                        name = input.nextLine();
+                        name = menu.formatName(name);
+                        name = menu.noDuplicateName(name, allBigCats);
+                        }
 
-                    HashMap<String,Object> bigCats = menu.makeHashMap(name);
-                    var newCat = bigCats.get(bigCatChoice);
+                    HashMap<String,PantheraGPS> bigCats = menu.makeHashMap(name);
+                    PantheraGPS newCat = bigCats.get(bigCatChoice);
 
                     allBigCats.add(newCat);
-                    System.out.println(name + " saved to your population.");
-
+                    System.out.println(name + " saved to your population."); 
                     System.out.println(newCat.toString());
-                    
-
                 }
+                
                 case "d" -> {
 
                 }
@@ -67,7 +71,9 @@ public class App {
                 }
             }
         }
+        input.close();
     }
+
 }
 
 class Menu {
@@ -100,12 +106,29 @@ class Menu {
                     """);
     }
 
-    public HashMap<String,Object> makeHashMap(String name){
-        HashMap<String,Object> bigCats = new HashMap<>();
+    public String formatName(String name){
+        if (name.length() == 0) {
+            return name;
+        }
+        return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
+    }   
+
+    public HashMap<String,PantheraGPS> makeHashMap(String name){
+        HashMap<String,PantheraGPS> bigCats = new HashMap<String,PantheraGPS>();
             bigCats.put("t",new Tiger(name));
             bigCats.put("l",new Lion(name));
             bigCats.put("j",new Jaguar(name));
             return bigCats;
+    }
+
+    public String noDuplicateName(String name, ArrayList<PantheraGPS> allBigCats){
+        for (var p : allBigCats) {
+            if (p.toString().contains(name)) {
+                System.out.println("A big cat with that name already exists. Please choose a different name.");
+                return "";
+            }
+        }
+        return name;
     }
 
 }

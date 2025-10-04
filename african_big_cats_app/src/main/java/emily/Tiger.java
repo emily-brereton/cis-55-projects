@@ -2,25 +2,24 @@ package emily;
 
 public class Tiger extends Panthera{
 
-    private final String furType = "stripes";
-    private final boolean sleepsInTrees = false;
-    String species;
+    //private final String furType = "stripes";
+    //private final boolean sleepsInTrees = false;
 
     Tiger(){
         name = "";
-        species = "Tiger";   
+        Species t = Species.TIGER;   
     }
 
     Tiger(String name){
         this.name = name;
-        this.species = "Tiger";
+        this.species = Species.TIGER;
     }
 
-    public String Species(){
+   /*  public String Species(){
         return species;
     }
 
-    @Override
+      @Override
     public String toString() {
         String s;
 
@@ -37,5 +36,5 @@ public class Tiger extends Panthera{
 
         return s;
 
-    }
+    }*/
 }
