@@ -51,7 +51,18 @@ public class App {
                 }
                 
                 case "d" -> {
-
+                    System.out.println("Please enter the name of the big cat you want to delete: ");
+                    String nameToDelete = input.nextLine();
+                    nameToDelete = menu.formatName(nameToDelete);
+                    for (int i = 0; i < allBigCats.size(); i++) {
+                        if (allBigCats.get(i).toString().contains(nameToDelete)) {
+                            allBigCats.remove(i);
+                            System.out.println(nameToDelete + " has been removed from your population.");
+                            break;
+                        }
+                        else {System.out.println("No big cat with that name was found. Please try again.");
+                            }
+                    }
                 }
                 case "f" -> {
 
@@ -123,7 +134,7 @@ class Menu {
 
     public String noDuplicateName(String name, ArrayList<PantheraGPS> allBigCats){
         for (var p : allBigCats) {
-            if (p.toString().contains(name)) {
+            if (p.name.equals(name)) {
                 System.out.println("A big cat with that name already exists. Please choose a different name.");
                 return "";
             }
