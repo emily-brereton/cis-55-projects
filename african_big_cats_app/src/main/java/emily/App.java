@@ -54,14 +54,17 @@ public class App {
                     System.out.println("Please enter the name of the big cat you want to delete: ");
                     String nameToDelete = input.nextLine();
                     nameToDelete = menu.formatName(nameToDelete);
-                    for (int i = 0; i < allBigCats.size(); i++) {
-                        if (allBigCats.get(i).toString().contains(nameToDelete)) {
-                            allBigCats.remove(i);
+                    boolean found = false;
+                    for (var p : allBigCats) {
+                        if (p.name.equals(nameToDelete) == true) {
+                            allBigCats.remove(p);
                             System.out.println(nameToDelete + " has been removed from your population.");
+                            found = true;
                             break;
                         }
-                        else {System.out.println("No big cat with that name was found. Please try again.");
-                            }
+                    }
+                    if (found == false) {
+                        System.out.println("No big cat with that name was found. Please try again.");
                     }
                 }
                 case "f" -> {
@@ -71,12 +74,10 @@ public class App {
                     System.out.println("Here is your current population:");
                     for (var p : allBigCats) { System.out.println(p.toString());
                     } 
-
                 }
                 case "q" -> {
                     System.out.println("Thank you for using the African Big Cats App!");
-
-                 }
+                }
                 default -> {
                     System.out.println("Invalid selection. Please try again");
                 }
