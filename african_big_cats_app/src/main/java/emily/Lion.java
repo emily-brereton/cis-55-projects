@@ -1,5 +1,7 @@
 package emily;
 
+import java.util.Random;
+
 public class Lion extends Panthera{
 
      //private final String furType = "stripes";
@@ -13,28 +15,8 @@ public class Lion extends Panthera{
     Lion(String name){
         this.name = name;
         this.species = Species.LION;
+        this.longitude = super.longitude();
+        this.latitude = super.latitude();
     }
 
-   /*  public String Species(){
-        return species;
-    }
-
-      @Override
-    public String toString() {
-        String s;
-
-        // since the object is complex, we return a JSON formatted string
-        s = "{ ";
-        s += "name: " + name;
-        s += ", ";
-        s += "species: " + Species();
-        s += ", ";
-        s += "longitude: " + this.longitude();
-        s += ", ";
-        s += "latitude: " + this.latitude();
-        s += " }";
-
-        return s;
-
-    }*/
 }

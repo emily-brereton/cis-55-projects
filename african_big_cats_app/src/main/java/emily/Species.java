@@ -13,7 +13,7 @@ public enum Species {
         this.sleepsInTrees = sleepsInTrees;
     }
 
-    public String getFurType(){
+    public String getFur(){
         return this.furType;
     }
 

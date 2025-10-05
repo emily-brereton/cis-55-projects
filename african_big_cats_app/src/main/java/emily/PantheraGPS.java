@@ -18,8 +18,8 @@ public class PantheraGPS {
     String name;
     Species species;
 
-    private Float longitude;
-    private Float latitude;
+    Float longitude;
+    Float latitude;
 
     private Random longitudeRandom;
     private Random latitudeRandom;
@@ -30,14 +30,14 @@ public class PantheraGPS {
         // initialize attributes
 
         // seed the random number generators for repeatable results
-        this.longitudeRandom = new Random();
-        this.longitudeRandom.setSeed(this.seed(name + "longitude"));
-        this.latitudeRandom = new Random();
-        this.latitudeRandom.setSeed(this.seed(name + "latitude"));
+        //this.longitudeRandom = new Random();
+        //this.longitudeRandom.setSeed(this.seed(name + "longitude"));
+        //this.latitudeRandom = new Random();
+        //this.latitudeRandom.setSeed(this.seed(name + "latitude"));
 
         // move the panthera into it's initial position
-        this.longitude = longitudeRandom.nextFloat() * maxLongitude;
-        this.latitude = latitudeRandom.nextFloat() * maxLatitude;
+        //this.longitude = longitudeRandom.nextFloat() * maxLongitude;
+        //this.latitude = latitudeRandom.nextFloat() * maxLatitude;
 
     }
 
@@ -51,9 +51,9 @@ public class PantheraGPS {
         s += ", ";
         s += "species: " + this.species;
         s += ", ";
-        s += "longitude: " + this.longitude();
+        s += "longitude: " + longitude();
         s += ", ";
-        s += "latitude: " + this.latitude();
+        s += "latitude: " + latitude();
         s += " }";
 
         return s;
@@ -92,11 +92,17 @@ public class PantheraGPS {
 
     // longitude of the panthera
     public Float longitude() {
+        this.longitudeRandom = new Random();
+        this.longitudeRandom.setSeed(this.seed(name + "longitude"));
+        this.longitude = longitudeRandom.nextFloat() * maxLongitude;
         return longitude;
     }
 
     // latitude of the panthera
     public Float latitude() {
+        this.latitudeRandom = new Random();
+        this.latitudeRandom.setSeed(this.seed(name + "latitude"));
+        this.latitude = latitudeRandom.nextFloat() * maxLatitude;
         return latitude;
     }
 }
