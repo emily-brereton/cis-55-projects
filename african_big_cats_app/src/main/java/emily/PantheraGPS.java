@@ -20,25 +20,16 @@ public class PantheraGPS {
 
     Float longitude;
     Float latitude;
+    Float speed;
+
+    int weight;
 
     private Random longitudeRandom;
     private Random latitudeRandom;
 
     // constructor
     public PantheraGPS() {
-
-        // initialize attributes
-
-        // seed the random number generators for repeatable results
-        //this.longitudeRandom = new Random();
-        //this.longitudeRandom.setSeed(this.seed(name + "longitude"));
-        //this.latitudeRandom = new Random();
-        //this.latitudeRandom.setSeed(this.seed(name + "latitude"));
-
-        // move the panthera into it's initial position
-        //this.longitude = longitudeRandom.nextFloat() * maxLongitude;
-        //this.latitude = latitudeRandom.nextFloat() * maxLatitude;
-
+        name = "";
     }
 
     // serializes attributes into a string
@@ -47,20 +38,29 @@ public class PantheraGPS {
 
         // since the object is complex, we return a JSON formatted string
         s = "{ ";
-        s += "name: " + name;
+        s += "name: " + Menu.formatName(name);
         s += ", ";
         s += "species: " + this.species;
         s += ", ";
         s += "longitude: " + longitude();
         s += ", ";
         s += "latitude: " + latitude();
+        s += ", ";
+        s += "current speed: " + this.getSpeed();
+        s += ", ";
+        s += "weight: " + this.getWeight();
+        s += ", ";
+        s += "fur type: " + this.species.getFur();
+        s += ", ";
+        s += "sleeps in trees: " + this.species.getSleepsInTrees();
         s += " }";
+
 
         return s;
 
     }
 
-    // getters
+    // getters and setters
     public String name() {
         return this.name;
     }
@@ -71,6 +71,22 @@ public class PantheraGPS {
 
     public void setSpecies(Species species) {
         this.species = species;
+    }
+
+    public float getSpeed() {   
+        return this.speed;
+    }
+
+    public void setSpeed(float speed) {
+        this.speed = speed; 
+    }
+
+    public int getWeight() {
+        return this.weight;
+    }
+
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
     // make a seed, based on the name

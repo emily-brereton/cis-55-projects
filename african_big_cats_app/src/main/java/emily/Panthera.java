@@ -1,5 +1,7 @@
 package emily;
 
+import java.util.Random;
+
 abstract class Panthera extends PantheraGPS{
 
     int weight;
@@ -8,26 +10,26 @@ abstract class Panthera extends PantheraGPS{
 // constructor
 public Panthera(){
     super();
-};
+    this.weight = initializeWeight();
+    this.speed = startingSpeed();
+}
 
 public void roar(){
     System.out.println("Rrrrrrrrroooooooaaaaarrrrr!");
 }
 
-public float speed(){
-    return speed;
-}
 
-public int getWeight() {
+public int initializeWeight(){
+    Random rand = new Random();
+    int weight = rand.nextInt(10, 601);
+    setWeight(weight);
     return weight;
 }
-public void setWeight(int weight) {
-    this.weight = weight;
-}
-public float getSpeed() {   
+
+public float startingSpeed(){
+    Random rand = new Random();
+    float speed = minSpeed + rand.nextFloat() * (maxSpeed - minSpeed);
+    setSpeed(speed);
     return speed;
-}
-public void setSpeed(float speed) {
-    this.speed = speed; 
 }
 }
