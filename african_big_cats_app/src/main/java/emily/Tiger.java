@@ -2,8 +2,7 @@ package emily;
 
 public class Tiger extends Panthera{
 
-    private final String furType;
-    private final boolean sleepsInTrees;
+    
 
     Tiger(){
         name = "";

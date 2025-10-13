@@ -24,6 +24,9 @@ public class PantheraGPS {
 
     int weight;
 
+    String furType;
+    boolean sleepsInTrees;
+
     private Random longitudeRandom;
     private Random latitudeRandom;
 

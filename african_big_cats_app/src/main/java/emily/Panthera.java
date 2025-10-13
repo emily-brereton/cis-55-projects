@@ -18,7 +18,6 @@ public void roar(){
     System.out.println("Rrrrrrrrroooooooaaaaarrrrr!");
 }
 
-
 public int initializeWeight(){
     Random rand = new Random();
     int weight = rand.nextInt(10, 601);

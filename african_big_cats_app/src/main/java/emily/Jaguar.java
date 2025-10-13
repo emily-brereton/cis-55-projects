@@ -7,7 +7,9 @@ public class Jaguar extends Panthera{
 
     Jaguar(){
         name = "";
-        Species j = Species.JAGUAR;   
+        Species j = Species.JAGUAR;
+        furType = j.getFur();
+        sleepsInTrees = j.getSleepsInTrees();     
     }
 
     Jaguar(String name){
@@ -15,6 +17,10 @@ public class Jaguar extends Panthera{
         this.species = Species.JAGUAR;
         this.longitude = super.longitude();
         this.latitude = super.latitude();
+        this.weight = super.weight;
+        this.speed = super.speed;
+        furType = species.getFur();
+        sleepsInTrees = species.getSleepsInTrees();
     }
 }
 

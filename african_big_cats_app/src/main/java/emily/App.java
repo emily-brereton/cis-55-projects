@@ -17,7 +17,6 @@ public class App {
         ArrayList<PantheraGPS> allBigCats = new ArrayList<PantheraGPS>();
         Scanner input = new Scanner(System.in);
         String selection = "";
-        
 
         while(!selection.equals("q")){
             Menu menu = new Menu();
@@ -26,66 +25,16 @@ public class App {
 
             switch (selection){
                 case "c" -> {
-                    String bigCatChoice = "";
-                    while (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")) {
-                        menu.printCreateMenu();
-                        bigCatChoice = input.nextLine();
-                        bigCatChoice = bigCatChoice.toLowerCase();
-                            if (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")){
-                                 System.out.println("Invalid selection. Please try again");
-                                }
-                            }
-                        System.out.println("Enter a name for your big cat: ");
-                        String name = input.nextLine();
-                        name = name.toUpperCase();
-                        name = menu.noDuplicateName(name, allBigCats);
-                        
-
-                    HashMap<String,PantheraGPS> bigCats = menu.makeHashMap(name);
-                    PantheraGPS newCat = bigCats.get(bigCatChoice);
-
-                    allBigCats.add(newCat);
-                    System.out.println(Menu.formatName(name) + " saved to your population."); 
-                    System.out.println(newCat.toString());
+                    menu.createCat(input,allBigCats);
                 }
-                
                 case "d" -> {
-                    System.out.println("Please enter the name of the big cat you want to delete: ");
-                    String nameToDelete = input.nextLine();
-                    nameToDelete = nameToDelete.toUpperCase();
-                    boolean found = false;
-                    for (var p : allBigCats) {
-                        if (p.name.equals(nameToDelete) == true) {
-                            allBigCats.remove(p);
-                            System.out.println(Menu.formatName(nameToDelete) + " has been removed from your population.");
-                            found = true;
-                            break;
-                        }
-                    }
-                    if (found == false) {
-                        System.out.println("No big cat with that name was found. Please try again.");
-                    }
+                    menu.deleteCat(input,allBigCats);
                 }
                 case "f" -> {
-                    System.out.println("Please enter the name of the big cat you want to find: ");
-                    String nameToFind = input.nextLine();
-                    nameToFind = nameToFind.toUpperCase();
-                    boolean found = false;
-                    for (var p : allBigCats) {
-                        if (p.name.contains(nameToFind) == true) {
-                            System.out.println(p.toString());
-                            found = true;
-                        }
-                    }
-                    if (found == false) {
-                        System.out.println("No big cat with that name was found. Please try again.");
-                    }
-
+                    menu.findCat(input,allBigCats);
                 }
                 case "l" -> {
-                    System.out.println("Here is your current population:");
-                    for (var p : allBigCats) { System.out.println(p.toString());
-                    } 
+                    menu.listCats(allBigCats);
                 }
                 case "q" -> {
                     System.out.println("Thank you for using the African Big Cats App!");
@@ -97,7 +46,6 @@ public class App {
         }
         input.close();
     }
-
 }
 
 class Menu {
@@ -130,6 +78,70 @@ class Menu {
                     """);
     }
 
+    // switch statement methods
+    public void createCat(Scanner input, ArrayList<PantheraGPS> allBigCats){
+        String bigCatChoice = "";
+        while (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")) {
+            printCreateMenu();
+            bigCatChoice = input.nextLine();
+            bigCatChoice = bigCatChoice.toLowerCase();
+                if (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")){
+                    System.out.println("Invalid selection. Please try again");
+                    }
+            }
+        System.out.println("Enter a name for your big cat: ");
+        String name = input.nextLine();
+        name = name.toUpperCase();
+        name = noDuplicateName(name, allBigCats);
+        HashMap<String,PantheraGPS> bigCats = makeHashMap(name);
+        PantheraGPS newCat = bigCats.get(bigCatChoice);
+        allBigCats.add(newCat);
+        System.out.println(formatName(name) + " saved to your population."); 
+        System.out.println(newCat.toString());
+    }
+
+    public void deleteCat(Scanner input, ArrayList<PantheraGPS> allBigCats){
+        System.out.println("Please enter the name of the big cat you want to delete: ");
+        String nameToDelete = input.nextLine();
+        nameToDelete = nameToDelete.toUpperCase();
+        boolean found = false;
+            for (var p : allBigCats) {
+                if (p.name.equals(nameToDelete) == true) {
+                    allBigCats.remove(p);
+                    System.out.println(Menu.formatName(nameToDelete) + " has been removed from your population.");
+                    found = true;
+                    break;
+                    }
+                }
+        if (found == false) {
+            System.out.println("No big cat with that name was found. Please try again.");
+            }
+    }
+
+    public void findCat(Scanner input, ArrayList<PantheraGPS> allBigCats){
+        System.out.println("Please enter the name of the big cat you want to find: ");
+        String nameToFind = input.nextLine();
+        nameToFind = nameToFind.toUpperCase();
+        boolean found = false;
+            for (var p : allBigCats) {
+                if (p.name.contains(nameToFind) == true) {
+                    System.out.println(p.toString());
+                    found = true;
+                    }
+                }
+            if (found == false) {
+                System.out.println("No big cat with that name was found. Please try again.");
+                }
+    }
+
+    public void listCats(ArrayList<PantheraGPS> allBigCats){
+        System.out.println("Here is your current population:");
+        for (var p : allBigCats) { System.out.println(p.toString());
+        } 
+    }
+
+
+    // helper methods
     public static String formatName(String name){
         if (name.length() == 0) {
             return name;
@@ -137,7 +149,7 @@ class Menu {
         return name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
     }   
 
-    public HashMap<String,PantheraGPS> makeHashMap(String name){
+    private HashMap<String,PantheraGPS> makeHashMap(String name){
         HashMap<String,PantheraGPS> bigCats = new HashMap<String,PantheraGPS>();
             bigCats.put("t",new Tiger(name));
             bigCats.put("l",new Lion(name));
@@ -145,7 +157,7 @@ class Menu {
             return bigCats;
     }
 
-    public String noDuplicateName(String name, ArrayList<PantheraGPS> allBigCats){
+    private String noDuplicateName(String name, ArrayList<PantheraGPS> allBigCats){
         for (var p : allBigCats) {
             if (p.name.equals(name)) {
                 System.out.println("A big cat with that name already exists. Please choose a different name.");
