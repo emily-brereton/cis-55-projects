@@ -2,9 +2,6 @@ package emily;
 
 public class Jaguar extends Panthera{
 
-   //private final String furType = "stripes";
-    //private final boolean sleepsInTrees = false;
-
     Jaguar(){
         name = "";
         Species j = Species.JAGUAR;

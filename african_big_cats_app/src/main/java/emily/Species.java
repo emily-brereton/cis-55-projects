@@ -13,11 +13,11 @@ public enum Species {
         this.sleepsInTrees = sleepsInTrees;
     }
 
-    public String getFur(){
+    protected String getFur(){
         return this.furType;
     }
 
-    public boolean getSleepsInTrees(){
+    protected boolean getSleepsInTrees(){
         return this.sleepsInTrees;
     }   
 }

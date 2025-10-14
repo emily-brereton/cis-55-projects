@@ -2,8 +2,6 @@ package emily;
 
 public class Tiger extends Panthera{
 
-    
-
     Tiger(){
         name = "";
         Species t = Species.TIGER; 

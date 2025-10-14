@@ -15,17 +15,16 @@ public class PantheraGPS {
 
     // attributes
 
-    String name;
-    Species species;
+    protected String name;
+    protected Species species;
 
-    Float longitude;
-    Float latitude;
-    Float speed;
+    protected Float longitude;
+    protected Float latitude;
+    protected Float speed;
 
-    int weight;
-
-    String furType;
-    boolean sleepsInTrees;
+    protected int weight;
+    protected String furType;
+    protected boolean sleepsInTrees;
 
     private Random longitudeRandom;
     private Random latitudeRandom;
@@ -57,10 +56,7 @@ public class PantheraGPS {
         s += ", ";
         s += "sleeps in trees: " + this.species.getSleepsInTrees();
         s += " }";
-
-
         return s;
-
     }
 
     // getters and setters
@@ -104,13 +100,13 @@ public class PantheraGPS {
         return seed;
     }
 
-    public void move() {
+    protected void move() {
         this.longitude += longitudeRandom.nextFloat() * maxSpeed;
         this.latitude += latitudeRandom.nextFloat() * maxSpeed;
     }
 
     // longitude of the panthera
-    public Float longitude() {
+    protected Float longitude() {
         this.longitudeRandom = new Random();
         this.longitudeRandom.setSeed(this.seed(name + "longitude"));
         this.longitude = longitudeRandom.nextFloat() * maxLongitude;
@@ -118,7 +114,7 @@ public class PantheraGPS {
     }
 
     // latitude of the panthera
-    public Float latitude() {
+    protected Float latitude() {
         this.latitudeRandom = new Random();
         this.latitudeRandom.setSeed(this.seed(name + "latitude"));
         this.latitude = latitudeRandom.nextFloat() * maxLatitude;

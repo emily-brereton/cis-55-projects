@@ -1,7 +1,5 @@
 package emily;
 
-import java.util.Random;
-
 public class Lion extends Panthera{
 
     Lion(){
