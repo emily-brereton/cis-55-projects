@@ -14,7 +14,6 @@ public class PantheraGPS {
     protected final float maxSpeed = 50.0f;
 
     // attributes
-
     protected String name;
     protected Species species;
 

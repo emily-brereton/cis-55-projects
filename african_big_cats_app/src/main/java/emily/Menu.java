@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public void printMenu(){
+    protected void printMenu(){
         System.out.println("""
                 ------------------------------------------------------------
                 African Big Cats App
@@ -21,7 +21,7 @@ public class Menu {
                 """);
     }
 
-    public void printCreateMenu(){
+    private void printCreateMenu(){
         System.out.println("""
             ------------------------------------------------------------
             Would you like to add a tiger, lion, or jaguar?
@@ -35,7 +35,7 @@ public class Menu {
     }
 
     // switch statement methods
-    public void createCat(Scanner input, ArrayList<PantheraGPS> allBigCats){
+    protected void createCat(Scanner input, ArrayList<PantheraGPS> allBigCats){
         String bigCatChoice = "";
         while (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")) {
             printCreateMenu();
@@ -56,7 +56,7 @@ public class Menu {
         System.out.println(newCat.toString());
     }
 
-    public void deleteCat(Scanner input, ArrayList<PantheraGPS> allBigCats){
+    protected void deleteCat(Scanner input, ArrayList<PantheraGPS> allBigCats){
         System.out.println("Please enter the name of the big cat you want to delete: ");
         String nameToDelete = input.nextLine();
         nameToDelete = nameToDelete.toUpperCase();
@@ -74,7 +74,7 @@ public class Menu {
             }
     }
 
-    public void findCat(Scanner input, ArrayList<PantheraGPS> allBigCats){
+    protected void findCat(Scanner input, ArrayList<PantheraGPS> allBigCats){
         System.out.println("Please enter the name of the big cat you want to find: ");
         String nameToFind = input.nextLine();
         nameToFind = nameToFind.toUpperCase();
@@ -90,7 +90,7 @@ public class Menu {
                 }
     }
 
-    public void listCats(ArrayList<PantheraGPS> allBigCats){
+    protected void listCats(ArrayList<PantheraGPS> allBigCats){
         System.out.println("Here is your current population:");
         for (var p : allBigCats) { System.out.println(p.toString());
         } 
@@ -98,7 +98,7 @@ public class Menu {
 
 
     // helper methods
-    public static String formatName(String name){
+    protected static String formatName(String name){
         if (name.length() == 0) {
             return name;
         }
@@ -122,5 +122,4 @@ public class Menu {
         }
         return name;
     }
-
 }

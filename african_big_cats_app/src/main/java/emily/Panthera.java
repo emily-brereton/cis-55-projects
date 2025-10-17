@@ -11,7 +11,7 @@ public Panthera(){
     this.speed = startingSpeed();
 }
 
-public void roar(){
+protected void roar(){
     System.out.println("Rrrrrrrrroooooooaaaaarrrrr!");
 }
 
