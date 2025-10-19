@@ -47,12 +47,10 @@ public class Menu {
             }
         }
 
-        // name is saved in all upper case for easy comparison and retrieval
-        // reject user-inputted name if a big cat object already exists with that name
-        System.out.println("Enter a name for your big cat: ");
-        String name = input.nextLine();
-        name = name.toUpperCase();
-        name = noDuplicateName(name, allBigCats);
+        // prompt user to enter name
+        // reject name if a big cat object already exists with that name
+        String name = "none";
+        name = noDuplicateName(input, name, allBigCats);
 
         // HashMap instantiates correct Panthera object (Lion, Tiger, or Jaguar)
         HashMap<String, PantheraGPS> bigCats = makeHashMap(name);
@@ -131,11 +129,18 @@ public class Menu {
 
     // only rejects user input if the formatted name matches exactly
     // ("Dan" accepted, even if "Dani" exists)
-    private String noDuplicateName(String name, ArrayList<PantheraGPS> allBigCats) {
-        for (var p : allBigCats) {
-            if (p.name.equals(name)) {
-                System.out.println("A big cat with that name already exists. Please choose a different name.");
-                return "";
+    private String noDuplicateName(Scanner input, String name, ArrayList<PantheraGPS> allBigCats) {
+        while (name.equals("none")) {
+            System.out.println("Enter a name for your big cat: ");
+            name = input.nextLine();
+
+            // name is saved in all upper case for easy comparison and retrieval
+            name = name.toUpperCase();
+            for (var p : allBigCats) {
+                if (p.name.equals(name)) {
+                    System.out.println("A big cat with that name already exists. Please choose a different name.");
+                    name = "none";
+                }
             }
         }
         return name;
