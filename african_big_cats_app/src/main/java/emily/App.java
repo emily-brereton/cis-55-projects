@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Course: CIS 59-101
  * Term/Year: Fall 2025
  * Date: 10/23/25
- * Project Name: African Big Cats App
+ * Project Name: African Big Cats App Part 1
  */
 public class App {
     public static void main(String[] args) {
@@ -17,20 +17,20 @@ public class App {
         Scanner input = new Scanner(System.in);
         String selection = "";
 
-        while(!selection.equals("q")){
+        while (!selection.equals("q")) {
             Menu menu = new Menu();
             menu.printMenu();
             selection = input.nextLine().toLowerCase();
 
-            switch (selection){
+            switch (selection) {
                 case "c" -> {
-                    menu.createCat(input,allBigCats);
+                    menu.createCat(input, allBigCats);
                 }
                 case "d" -> {
-                    menu.deleteCat(input,allBigCats);
+                    menu.deleteCat(input, allBigCats);
                 }
                 case "f" -> {
-                    menu.findCat(input,allBigCats);
+                    menu.findCat(input, allBigCats);
                 }
                 case "l" -> {
                     menu.listCats(allBigCats);

@@ -1,15 +1,15 @@
 package emily;
 
-public class Lion extends Panthera{
+public class Lion extends Panthera {
 
-    Lion(){
+    Lion() {
         name = "";
         Species l = Species.LION;
         furType = l.getFur();
-        sleepsInTrees = l.getSleepsInTrees();  
-    }  
+        sleepsInTrees = l.getSleepsInTrees();
+    }
 
-    Lion(String name){
+    Lion(String name) {
         this.name = name;
         this.species = Species.LION;
         this.longitude = super.longitude();

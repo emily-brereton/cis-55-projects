@@ -71,12 +71,12 @@ public class PantheraGPS {
         this.species = species;
     }
 
-    public float getSpeed() {   
+    public float getSpeed() {
         return this.speed;
     }
 
     public void setSpeed(float speed) {
-        this.speed = speed; 
+        this.speed = speed;
     }
 
     public int getWeight() {
@@ -91,7 +91,7 @@ public class PantheraGPS {
     private Integer seed(String s) {
         Integer seed = 0;
 
-        for (Integer i = 0; i < s.length() ; i++) {
+        for (Integer i = 0; i < s.length(); i++) {
             char ch = s.charAt(i);
             seed += (int) ch;
         }

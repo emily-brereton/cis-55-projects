@@ -1,15 +1,15 @@
 package emily;
 
-public class Jaguar extends Panthera{
+public class Jaguar extends Panthera {
 
-    Jaguar(){
+    Jaguar() {
         name = "";
         Species j = Species.JAGUAR;
         furType = j.getFur();
-        sleepsInTrees = j.getSleepsInTrees();     
+        sleepsInTrees = j.getSleepsInTrees();
     }
 
-    Jaguar(String name){
+    Jaguar(String name) {
         this.name = name;
         this.species = Species.JAGUAR;
         this.longitude = super.longitude();
@@ -20,4 +20,3 @@ public class Jaguar extends Panthera{
         sleepsInTrees = species.getSleepsInTrees();
     }
 }
-
