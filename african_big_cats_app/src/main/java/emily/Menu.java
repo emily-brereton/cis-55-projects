@@ -15,6 +15,8 @@ public class Menu {
                     d       [D]elete a big cat
                     f       [F]ind a big cat
                     l       [L]ist all big cats
+                    r       [R]isk report
+                    w       [W]arning report
                     q       [Q]uit
                 ------------------------------------------------------------
                 Enter a command:
@@ -38,11 +40,13 @@ public class Menu {
     protected void createCat(Scanner input, ArrayList<PantheraGPS> allBigCats) {
 
         String bigCatChoice = "";
-        while (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")) {
+        while (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")
+                && !bigCatChoice.equals("r") && !bigCatChoice.equals("w")) {
             printCreateMenu();
             bigCatChoice = input.nextLine();
             bigCatChoice = bigCatChoice.toLowerCase();
-            if (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")) {
+            if (!bigCatChoice.equals("t") && !bigCatChoice.equals("l") && !bigCatChoice.equals("j")
+                    && !bigCatChoice.equals("r") && !bigCatChoice.equals("w")) {
                 System.out.println("Invalid selection. Please try again");
             }
         }
@@ -65,21 +69,29 @@ public class Menu {
     // only removes big cat if the formatted input exactly matches an existing big
     // cat's name ("Dan" would not remove "Dani")
     protected void deleteCat(Scanner input, ArrayList<PantheraGPS> allBigCats) {
-        System.out.println("Please enter the name of the big cat you want to delete: ");
-        String nameToDelete = input.nextLine();
-        nameToDelete = nameToDelete.toUpperCase();
-        boolean found = false;
-        for (var p : allBigCats) {
-            if (p.name.equals(nameToDelete) == true) {
-                allBigCats.remove(p);
-                System.out.println(Menu.formatName(nameToDelete) + " has been removed from your population.");
-                found = true;
-                break;
-            }
-        }
-        if (found == false) {
-            System.out.println("No big cat with that name was found. Please try again.");
-        }
+        String message = "Please enter the name of the big cat you wish to delete: ";
+        PantheraGPS catToDelete = catExists(input, allBigCats, message);
+
+        System.out.println(Menu.formatName(catToDelete.name()) + " has been removed from your population.");
+        allBigCats.remove(catToDelete);
+        /*
+         * System.out.
+         * println("Please enter the name of the big cat you want to delete: ");
+         * String nameToDelete = input.nextLine();
+         * nameToDelete = nameToDelete.toUpperCase();
+         * boolean found = false;
+         * for (var p : allBigCats) {
+         * if (p.name.equals(nameToDelete) == true) {
+         * allBigCats.remove(p);
+         * System.out.println(Menu.formatName(nameToDelete) +
+         * " has been removed from your population.");
+         * found = true;
+         * break;
+         * }
+         * }
+         * if (found == false) {
+         * System.out.println("No big cat with that name was found. Please try again.");
+         */
     }
 
     // search arrayList for a specific big cat
@@ -88,18 +100,7 @@ public class Menu {
     // prints latitude, longitude, speed, and species information for big cat(s)
     protected void findCat(Scanner input, ArrayList<PantheraGPS> allBigCats) {
         System.out.println("Please enter the name of the big cat you want to find: ");
-        String nameToFind = input.nextLine();
-        nameToFind = nameToFind.toUpperCase();
-        boolean found = false;
-        for (var p : allBigCats) {
-            if (p.name.contains(nameToFind) == true) {
-                System.out.println(p.toString());
-                found = true;
-            }
-        }
-        if (found == false) {
-            System.out.println("No big cat with that name was found. Please try again.");
-        }
+        catsExist(input, allBigCats);
     }
 
     // prints latitude, longitude, speed, and species info for all big cats
@@ -108,6 +109,93 @@ public class Menu {
         for (var p : allBigCats) {
             System.out.println(p.toString());
         }
+    }
+
+    // risk report
+    protected void riskReport(Scanner input, ArrayList<PantheraGPS> allBigCats) {
+        String message = "Please enter the name of the first big cat you want to compare: ";
+        PantheraGPS catA = catExists(input, allBigCats, message);
+        System.out.println();
+
+        message = "Please enter the name of the second big cat you want to compare: ";
+        PantheraGPS catB = catExists(input, allBigCats, message);
+        System.out.println();
+
+        double distance = distance(catA.getLongitude(), catB.getLongitude(), catA.getLatitude(), catB.getLatitude());
+        System.out.println(distance);
+    }
+
+    protected void warningReport(Scanner input, ArrayList<PantheraGPS> allBigCats) {
+        System.out.println("Please enter your approximate longitude: ");
+        String lon = input.nextLine();
+        float longitude = Float.parseFloat(lon);
+
+        System.out.println("Please enter your approximate latitude: ");
+        String lat = input.nextLine();
+        float latitude = Float.parseFloat(lat);
+
+        PantheraGPS closestCat = new PantheraGPS();
+        double distance = 1000000.0;
+        double compareDistance;
+
+        for (PantheraGPS p : allBigCats) {
+            compareDistance = distance(longitude, p.getLongitude(), latitude, p.getLatitude());
+            if (compareDistance < distance) {
+                closestCat = p;
+                distance = compareDistance;
+            }
+        }
+        System.out.println("The closest cat is " + closestCat.name() + " the " + closestCat.species() + ". They are "
+                + distance + " feet away from you.");
+    }
+
+    /*
+     * helper methods
+     */
+
+    // list all cats with names containing user-inputted string
+    private void catsExist(Scanner input, ArrayList<PantheraGPS> allBigCats) {
+        boolean found = false;
+        while (found != true) {
+            String nameToFind = input.nextLine();
+            nameToFind = nameToFind.toUpperCase();
+            for (PantheraGPS p : allBigCats) {
+                if (p.name.contains(nameToFind) == true) {
+                    found = true;
+                    System.out.println(p.toString());
+                }
+            }
+            if (found == false) {
+                System.out.println("No big cat with that name was found. Please try again.");
+            }
+        }
+    }
+
+    // return cat only if their name matches exactly
+    private PantheraGPS catExists(Scanner input, ArrayList<PantheraGPS> allBigCats, String message) {
+        PantheraGPS cat = new PantheraGPS();
+        boolean found = false;
+        while (found != true) {
+            System.out.println(message);
+            String name = input.nextLine();
+            name = name.toUpperCase();
+            for (PantheraGPS p : allBigCats) {
+                if (p.name.equals(name) == true) {
+                    found = true;
+                    cat = p;
+                }
+            }
+            if (found == false) {
+                System.out.println("No big cat with that name was found. Please try again.");
+            }
+        }
+        return cat;
+    }
+
+    // distance formula
+    private double distance(float longA, float longB, float latA, float latB) {
+        double distance = Math.sqrt(Math.pow((longB - longA), 2) + Math.pow((latB - latA), 2));
+        return distance;
     }
 
     // standard name formatting for display only

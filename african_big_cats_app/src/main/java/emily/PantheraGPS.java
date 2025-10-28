@@ -87,6 +87,14 @@ public class PantheraGPS {
         this.weight = weight;
     }
 
+    public float getLongitude() {
+        return this.longitude;
+    }
+
+    public float getLatitude() {
+        return this.latitude;
+    }
+
     // make a seed, based on the name
     private Integer seed(String s) {
         Integer seed = 0;

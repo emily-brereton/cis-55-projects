@@ -35,6 +35,12 @@ public class App {
                 case "l" -> {
                     menu.listCats(allBigCats);
                 }
+                case "r" -> {
+                    menu.riskReport(input, allBigCats);
+                }
+                case "w" -> {
+                    menu.warningReport(input, allBigCats);
+                }
                 case "q" -> {
                     System.out.println("Thank you for using the African Big Cats App!");
                 }
