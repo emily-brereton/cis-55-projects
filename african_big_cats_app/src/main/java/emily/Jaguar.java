@@ -19,4 +19,5 @@ public class Jaguar extends Panthera {
         furType = species.getFur();
         sleepsInTrees = species.getSleepsInTrees();
     }
+
 }
