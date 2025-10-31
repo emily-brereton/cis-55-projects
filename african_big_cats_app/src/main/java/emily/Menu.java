@@ -79,10 +79,6 @@ public class Menu {
     }
 
     protected void listCats(ArrayList<PantheraGPS> allBigCats) {
-        if (allBigCats.isEmpty()) {
-            System.out.println("No big cats in your population yet.");
-            return;
-        }
         System.out.println("Here is your current population:");
         for (PantheraGPS p : allBigCats) {
             System.out.println(p);
@@ -129,6 +125,14 @@ public class Menu {
 
     // ---------- Helper Methods ----------
 
+    protected boolean nullCheck(ArrayList<PantheraGPS> allBigCats) {
+        if (allBigCats == null || allBigCats.isEmpty()) {
+            System.out.println("No big cats in your population yet.");
+            return false;
+        }
+        return true;
+    }
+
     private void catsExist(Scanner input, ArrayList<PantheraGPS> allBigCats) {
         String nameToFind = input.nextLine().toUpperCase();
         boolean found = false;
@@ -168,10 +172,12 @@ public class Menu {
         return cat;
     }
 
+    // planar distance formula
     private double distance(float longA, float longB, float latA, float latB) {
         return Math.sqrt(Math.pow(longB - longA, 2) + Math.pow(latB - latA, 2));
     }
 
+    // standard name formatting, for display only
     protected static String formatName(String name) {
         if (name.isEmpty())
             return name;

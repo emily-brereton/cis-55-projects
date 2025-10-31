@@ -27,19 +27,34 @@ public class App {
                     menu.createCat(input, allBigCats);
                 }
                 case "d" -> {
-                    menu.deleteCat(input, allBigCats);
+                    if (menu.nullCheck(allBigCats)) {
+                        menu.deleteCat(input, allBigCats);
+                    }
                 }
                 case "f" -> {
-                    menu.findCat(input, allBigCats);
+                    if (menu.nullCheck(allBigCats)) {
+                        menu.findCat(input, allBigCats);
+                    }
                 }
                 case "l" -> {
-                    menu.listCats(allBigCats);
+                    if (menu.nullCheck(allBigCats)) {
+                        menu.listCats(allBigCats);
+                    }
                 }
                 case "r" -> {
-                    menu.riskReport(input, allBigCats);
+                    if (menu.nullCheck(allBigCats)) {
+                        try {
+                            menu.riskReport(input, allBigCats);
+                        } catch (Exception e) {
+                            System.out.println("Invalid entry. Please try again");
+                        }
+                    }
+
                 }
                 case "w" -> {
-                    menu.warningReport(input, allBigCats);
+                    if (menu.nullCheck(allBigCats)) {
+                        menu.warningReport(input, allBigCats);
+                    }
                 }
                 case "q" -> {
                     System.out.println("Thank you for using the African Big Cats App!");
