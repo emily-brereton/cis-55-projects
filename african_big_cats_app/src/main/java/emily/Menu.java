@@ -98,11 +98,8 @@ public class Menu {
     }
 
     protected void warningReport(Scanner input, ArrayList<PantheraGPS> allBigCats) {
-        System.out.print("Enter your approximate longitude: ");
-        float longitude = Float.parseFloat(input.nextLine());
-
-        System.out.print("Enter your approximate latitude: ");
-        float latitude = Float.parseFloat(input.nextLine());
+        float longitude = getFloat("Enter your approximate longitude: ", input);
+        float latitude = getFloat("Enter your approximate latitude: ", input);
 
         PantheraGPS closestCat = null;
         double minDistance = Double.MAX_VALUE;
@@ -124,6 +121,18 @@ public class Menu {
     }
 
     // ---------- Helper Methods ----------
+
+    private float getFloat(String message, Scanner input) {
+        while (true) {
+            System.out.print(message + " ");
+            try {
+                String line = input.nextLine().trim();
+                return Float.parseFloat(line);
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid entry. Please enter a numeric value.");
+            }
+        }
+    }
 
     protected boolean nullCheck(ArrayList<PantheraGPS> allBigCats) {
         if (allBigCats == null || allBigCats.isEmpty()) {

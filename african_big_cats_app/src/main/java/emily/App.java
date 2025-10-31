@@ -43,13 +43,8 @@ public class App {
                 }
                 case "r" -> {
                     if (menu.nullCheck(allBigCats)) {
-                        try {
-                            menu.riskReport(input, allBigCats);
-                        } catch (Exception e) {
-                            System.out.println("Invalid entry. Please try again");
-                        }
+                        menu.riskReport(input, allBigCats);
                     }
-
                 }
                 case "w" -> {
                     if (menu.nullCheck(allBigCats)) {
