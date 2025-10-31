@@ -93,8 +93,8 @@ public class Menu {
         PantheraGPS catB = catExists(input, allBigCats, message);
 
         double distance = distance(catA.getLongitude(), catB.getLongitude(), catA.getLatitude(), catB.getLatitude());
-        System.out.printf("The distance between %s and %s is %.2f feet.%n",
-                formatName(catA.name()), formatName(catB.name()), distance);
+        System.out.printf("The distance between %s the %s and %s the %s is %.2f feet.%n",
+                formatName(catA.name()), catA.species(), formatName(catB.name()), catB.species(), distance);
     }
 
     protected void warningReport(Scanner input, ArrayList<PantheraGPS> allBigCats) {
@@ -111,13 +111,8 @@ public class Menu {
                 minDistance = compareDistance;
             }
         }
-
-        if (closestCat != null) {
-            System.out.printf("The closest cat is %s the %s, approximately %.2f feet away.%n",
-                    formatName(closestCat.name()), closestCat.species(), minDistance);
-        } else {
-            System.out.println("No cats found in your population.");
-        }
+        System.out.printf("The closest cat is %s the %s, approximately %.2f feet away.%n",
+                formatName(closestCat.name()), closestCat.species(), minDistance);
     }
 
     // ---------- Helper Methods ----------
