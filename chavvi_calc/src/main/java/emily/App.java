@@ -59,6 +59,10 @@ public class App {
     }
 }
 
+class Menu {
+    
+}
+
 
 class Calc {
 
