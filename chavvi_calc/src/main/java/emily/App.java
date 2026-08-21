@@ -37,20 +37,20 @@ public class App {
                     calc.setB(calc.saveX("Enter a value for b: ",input));
                 }
                 case "+" -> {
-                    a = calc.add(a,b);
+                    calc.setA(menu.add(a,b));
                 }
                 case "-" -> {
-                    a = calc.subtract(a,b);
+                    calc.setA(menu.subtract(a,b));
                 }
                 case "*" -> {
-                    a = calc.multiply(a,b);
+                    calc.setA(menu.multiply(a,b));
                 }
                 case "/" -> {
-                    a = calc.divide(a,b);
+                    calc.setA(menu.divide(a,b));
                 }
                 case "c","C" -> {
-                    a = calc.clear(a);
-                    b = calc.clear(b);
+                    calc.setA(menu.clear(a));
+                    calc.setB(menu.clear(b));
                 }
                 case "q","Q" -> System.out.println("System terminated.");
                 default -> System.out.println("Invalid entry. Please try again.");
@@ -90,8 +90,34 @@ class Menu {
         System.out.println(menu);
     }
 
-}
+    public float add(float a,float b) {
+        return a += b;
+    }
 
+    public float subtract(float a,float b) {
+        return a -= b;
+    }
+
+    public float multiply(float a,float b) {
+        return a *= b;
+    }
+
+    // if b = 0, error message is printed and a remains unchanged
+    public float divide(float a,float b) {
+        if (b == 0) {
+            System.out.println("Error: Division by zero is not allowed.");
+            return a;
+        } else {
+            return a /= b;
+        }
+    }
+
+    // reset variable to 0.0
+    public float clear(float x) {
+        return 0.0f;
+    }
+
+}
 
 class Calc {
 
@@ -145,38 +171,5 @@ class Calc {
     public float saveX(String message, Scanner input) {
         System.out.println(message);
         return getNumber(input,a);
-    }
-
-
-    // public float getB(Scanner input) {
-    //     System.out.println("Enter a value for b: ");
-    //     return getNumber(input, b);
-    // }
-
-    public float add(float a,float b) {
-        return a += b;
-    }
-
-    public float subtract(float a,float b) {
-        return a -= b;
-    }
-
-    public float multiply(float a,float b) {
-        return a *= b;
-    }
-
-    // if b = 0, error message is printed and a remains unchanged
-    public float divide(float a,float b) {
-        if (b == 0) {
-            System.out.println("Error: Division by zero is not allowed.");
-            return a;
-        } else {
-            return a /= b;
-        }
-    }
-
-    // reset variable to 0.0
-    public float clear(float x) {
-        return 0.0f;
     }
 }
