@@ -37,20 +37,20 @@ public class App {
                     calc.setB(calc.saveX("Enter a value for b: ",input));
                 }
                 case "+" -> {
-                    calc.setA(menu.add(a,b));
+                    calc.setA(menu.add(calc.getA(),calc.getB()));
                 }
                 case "-" -> {
-                    calc.setA(menu.subtract(a,b));
+                    calc.setA(menu.subtract(calc.getA(),calc.getB()));
                 }
                 case "*" -> {
-                    calc.setA(menu.multiply(a,b));
+                    calc.setA(menu.multiply(calc.getA(),calc.getB()));
                 }
                 case "/" -> {
-                    calc.setA(menu.divide(a,b));
+                    calc.setA(menu.divide(calc.getA(),calc.getB()));
                 }
                 case "c","C" -> {
-                    calc.setA(menu.clear(a));
-                    calc.setB(menu.clear(b));
+                    calc.setA(menu.clear(calc.getA()));
+                    calc.setB(menu.clear(calc.getB()));
                 }
                 case "q","Q" -> System.out.println("System terminated.");
                 default -> System.out.println("Invalid entry. Please try again.");
@@ -116,7 +116,6 @@ class Menu {
     public float clear(float x) {
         return 0.0f;
     }
-
 }
 
 class Calc {
@@ -130,12 +129,6 @@ class Calc {
         this.b = 0.0f;
     }
 
-    // overloaded constructor. Initialize Object with user defined values for a and b
-    public Calc(float a,float b) {
-        this.a = a;
-        this.b = b;
-    }
-
     public float getA() {
         return a;
     }
@@ -143,7 +136,6 @@ class Calc {
     public float getB() {
         return b;
     }
-
 
     public void setA(float a) {
         this.a = a;
