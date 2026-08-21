@@ -18,22 +18,23 @@ public class App {
         float b = 0.0f;
         Scanner input = new Scanner(System.in);
         String choice = "";
+        Menu menu = new Menu();
         Calc calc = new Calc();   
 
         // print menu and get user input, until user exits program
         while (!choice.equalsIgnoreCase("q")) {
 
-            calc.printMenu(a,b);
+            menu.printMenu(calc);
 
             System.out.print("Enter a command: ");
             choice = input.nextLine();
 
             switch (choice) {
                 case "a","A" -> {
-                    a = calc.saveX("Enter a value for a: ",input);
+                    calc.setA(calc.saveX("Enter a value for a: ",input));
                 }
                 case "b","B" -> {
-                    b = calc.saveX("Enter a value for b: ",input);
+                    calc.setB(calc.saveX("Enter a value for b: ",input));
                 }
                 case "+" -> {
                     a = calc.add(a,b);
@@ -60,7 +61,35 @@ public class App {
 }
 
 class Menu {
-    
+
+    // prints the menu to the console, formats and rounds a and b to three places 
+    public void printMenu(Calc calc) {
+
+        DecimalFormat df = new DecimalFormat("0.000");
+        df.setRoundingMode(RoundingMode.HALF_UP);
+
+        String menuTitle = """
+                --------------------------------------
+                Chavvi Calc
+                --------------------------------------
+                """;
+        String menuVariables = "a = " + df.format(calc.getA()) + "\t b = " + df.format(calc.getB());
+        String menuCommands = """
+                --------------------------------------
+                a \t Enter a value for a
+                b \t Enter a value for b
+                + \t Add
+                - \t Subtract
+                * \t Multiply
+                / \t Divide
+                c \t Clear
+                q \t Quit
+                --------------------------------------
+                """;
+    String menu = (menuTitle + menuVariables + "\n" + menuCommands);
+        System.out.println(menu);
+    }
+
 }
 
 
@@ -79,6 +108,14 @@ class Calc {
     public Calc(float a,float b) {
         this.a = a;
         this.b = b;
+    }
+
+    public float getA() {
+        return a;
+    }
+
+    public float getB() {
+        return b;
     }
 
 
@@ -141,33 +178,5 @@ class Calc {
     // reset variable to 0.0
     public float clear(float x) {
         return 0.0f;
-    }
-
-    // prints the menu to the console, formats and rounds a and b to three places 
-    public void printMenu(float a,float b) {
-
-        DecimalFormat df = new DecimalFormat("0.000");
-        df.setRoundingMode(RoundingMode.HALF_UP);
-
-        String menuTitle = """
-                --------------------------------------
-                Chavvi Calc
-                --------------------------------------
-                """;
-        String menuVariables = "a = " + df.format(a) + "\t b = " + df.format(b);
-        String menuCommands = """
-                --------------------------------------
-                a \t Enter a value for a
-                b \t Enter a value for b
-                + \t Add
-                - \t Subtract
-                * \t Multiply
-                / \t Divide
-                c \t Clear
-                q \t Quit
-                --------------------------------------
-                """;
-    String menu = (menuTitle + menuVariables + "\n" + menuCommands);
-        System.out.println(menu);
     }
 }
