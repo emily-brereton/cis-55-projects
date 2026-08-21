@@ -14,7 +14,6 @@ import java.math.RoundingMode;
 public class App {
     public static void main(String[] args) {
 
-        // a and b are the two numbers to be calculated
         float a = 0.0f;
         float b = 0.0f;
         Scanner input = new Scanner(System.in);
@@ -115,20 +114,17 @@ class Calc {
 
     // adds a and b, sum is saved in variable a
     public float add(float a,float b) {
-        a = a + b;
-        return a;
+        return a += b;
     }
 
     // subtracts b from a, difference is saved in variable a 
     public float subtract(float a,float b) {
-        a = a - b;
-        return a;
+        return a -= b;
     }
 
     // multiplies a and b, product is saved in variable a
     public float multiply(float a,float b) {
-        a = a * b;
-        return a;
+        return a *= b;
     }
 
     // divides a by b, quotient is saved in variable a
@@ -138,15 +134,14 @@ class Calc {
             System.out.println("Error: Division by zero is not allowed.");
             return a;
         } else {
-            a = a / b;
-            return a;
+            return a /= b;
         }
     }
 
     // clears the value of a, returns a as 0.000
     public float clearA(float a) {
         a = 0.0f;
-        return a;
+        return 0.0f;
     }
 
     // clears the value of b, returns b as 0.000

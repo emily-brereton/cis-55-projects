@@ -7,8 +7,8 @@ import java.util.Scanner;
  * Student Name: Emily Brereton
  * Course: CIS 59-101
  * Term/Year: Fall 2025
- * Date: 10/23/25
- * Project Name: African Big Cats App Part 1
+ * Date: 10/30/25
+ * Project Name: African Big Cats App Part 2
  */
 public class App {
     public static void main(String[] args) {
