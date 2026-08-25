@@ -30,10 +30,10 @@ public class App {
 
             switch (choice) {
                 case "a" -> {
-                    calc.setA(calc.saveX("Enter a value for a: ",input));
+                    calc.setA(calc.saveValue("Enter a value for a: ",input));
                 }
                 case "b" -> {
-                    calc.setB(calc.saveX("Enter a value for b: ",input));
+                    calc.setB(calc.saveValue("Enter a value for b: ",input));
                 }
                 case "+" -> {
                     calc.setA(menu.add(calc.getA(),calc.getB()));
@@ -145,7 +145,7 @@ class Calc {
     }
     
     // method to obtain a value for any variable
-    // try/catch statement: try prompts user to enter data; catch prevents exception when user enters non-numerical data
+    // try prompts user to enter data; catch prevents exception when user enters non-numerical data
     private float getNumber(Scanner input,float n) {
         try {
             n = input.nextFloat();
@@ -153,13 +153,13 @@ class Calc {
             return n;
         }
         catch (Exception e) {
-            System.out.println("Invalid input. Please enter a numberical value.");
+            System.out.println("Invalid input. Please enter a numerical value.");
             input.nextLine();
             return n;
         }
     }
 
-    public float saveX(String message, Scanner input) {
+    public float saveValue(String message, Scanner input) {
         System.out.println(message);
         return getNumber(input,a);
     }
