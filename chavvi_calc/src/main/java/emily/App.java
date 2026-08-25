@@ -4,18 +4,17 @@ import java.util.Scanner;
 import java.text.DecimalFormat;
 import java.math.RoundingMode;
 
-/*
- * Student Name: Emily Brereton
+/* Student Name: Emily Brereton
  * Course: CIS 55-101
  * Term/Year: Fall 2026
- * Date: 8/20/26
+ * Date: 8/24/26
  * Project Name: ChavviCalc App
  */
+
+
 public class App {
     public static void main(String[] args) {
 
-        float a = 0.0f;
-        float b = 0.0f;
         Scanner input = new Scanner(System.in);
         String choice = "";
         Menu menu = new Menu();
@@ -27,13 +26,13 @@ public class App {
             menu.printMenu(calc);
 
             System.out.print("Enter a command: ");
-            choice = input.nextLine();
+            choice = input.nextLine().toLowerCase();
 
             switch (choice) {
-                case "a","A" -> {
+                case "a" -> {
                     calc.setA(calc.saveX("Enter a value for a: ",input));
                 }
-                case "b","B" -> {
+                case "b" -> {
                     calc.setB(calc.saveX("Enter a value for b: ",input));
                 }
                 case "+" -> {
@@ -48,11 +47,11 @@ public class App {
                 case "/" -> {
                     calc.setA(menu.divide(calc.getA(),calc.getB()));
                 }
-                case "c","C" -> {
+                case "c" -> {
                     calc.setA(menu.clear(calc.getA()));
                     calc.setB(menu.clear(calc.getB()));
                 }
-                case "q","Q" -> System.out.println("System terminated.");
+                case "q" -> System.out.println("System terminated.");
                 default -> System.out.println("Invalid entry. Please try again.");
             }
         }
